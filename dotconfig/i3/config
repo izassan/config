@@ -12,7 +12,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # set wallpaper with feh
 exec_always --no-startup-id feh --bg-scale ~/.wallpaper
 
-exec_always --no-startup-id fcitx5
+exec_always --no-startup-id fcitx5 -d
 
 # keybindings
 ## execute application
