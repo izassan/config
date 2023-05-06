@@ -1,0 +1,21 @@
+snippet get-springboot "get mapping method of spring-boot"
+@RequestMapping(value="${1}", method=RequestMethod.GET)
+public ${2} ${3}() {
+	${4}
+}
+endsnippet
+
+snippet post-springboot "post mapping method of spring-boot"
+@RequestMapping(value="${1}", method=RequestMethod.POST)
+public ${2} ${3}() {
+	${4}
+}
+endsnippet
+
+snippet test-springboot-api "testcase of api calling"
+@Test
+public ${1}()throws Exception{
+	this.mockMvc.perform(get("${3}"))
+		.${4};
+}
+endsnippet
