@@ -93,8 +93,9 @@ runtime! _config/*.vim
 
 " colorscheme
 syntax enable
-if filereadable(expand("$VIMUSERCONFIGDIR/colors/molokai.vim"))
-    colorscheme molokai
+if filereadable(expand("$VIMUSERCONFIGDIR/colors/material-theme.vim"))
+    set background=dark
+    colorscheme lucius
 endif
 
 " local vim configuration
