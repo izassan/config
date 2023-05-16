@@ -21,7 +21,7 @@ function InstallPluginManager()
     endif
     echo "Installing" s:plugin_manager_name "..."
     let l:commands = join([s:curl_command, l:dest_path, l:dl_url], " ")
-    call system(l:commands)
+    call job_start(l:commands)
     echo s:plugin_manager_name "installed!"
 endfunction
 
@@ -35,6 +35,6 @@ function InstallColorschemes()
     endif
     echo "Instaling colorschemes..."
     let l:commands = join([s:curl_command, l:dest_path, l:dl_url], " ")
-    call system(l:commands)
+    call job_start(l:commands)
     echo "Colorschemes installed!"
 endfunction
