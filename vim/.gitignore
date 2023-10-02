@@ -1,7 +1,0 @@
-.netrwhist
-plugins/*
-autoload/*
-colors/*
-pack/*
-
-!.gitkeep
