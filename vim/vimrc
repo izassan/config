@@ -1,0 +1,167 @@
+" Color
+"" Download iceberg colorscheme command(for linux):
+""   curl -fLo ~/.vim/colors/iceberg.vim --create-dirs \
+""      https://raw.githubusercontent.com/cocopon/iceberg.vim/master/colors/iceberg.vim
+set t_Co=256
+let s:extend_colorscheme_filepath = has("win32") ?
+    \ expand("$HOME/vimfiles/colors/iceberg.vim") :       
+    \ expand("$HOME/.vim/colors/iceberg.vim")        
+if filereadable(s:extend_colorscheme_filepath)
+    colorscheme iceberg
+endif
+
+
+" General
+set number
+set title
+set wildmenu
+set history=10000
+set showmatch
+set matchtime=1
+set mouse=""
+set fileformats=unix,dos,mac
+set backspace=indent,eol,start
+
+
+" Indent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+
+
+" Search
+set ignorecase
+set smartcase
+set wrapscan
+set incsearch
+set hlsearch
+
+
+" Backup
+set nowritebackup
+set nobackup
+set noswapfile
+
+
+" Display
+set noerrorbells
+set cmdheight=1
+set laststatus=2
+set ambiwidth=double
+set showcmd
+set display=lastline
+
+
+" Python3
+if has("win32")
+let s:pythonthreehome = expand("$HOME/AppData/Local/Programs/Python/Python312")
+let s:pythonthreedll = expand("$HOME/AppData/Local/Programs/Python/Python312/python312.dll")
+let &pythonthreehome=s:pythonthreehome
+let &pythonthreedll=s:pythonthreedll
+endif
+
+" GVim configuration
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions+=a
+    set guioptions+=R
+endif
+
+
+" Key mapping
+nnoremap <Space> <Nop>
+nnoremap <Space>je :e .<CR>
+nnoremap + <C-a>
+nnoremap - <C-x>
+inoremap jj <ESC>
+nnoremap Y y$
+nnoremap <C-h> :nohlsearch<CR>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
+nnoremap <C-c> ggVG"+y
+
+" Plugin manage
+"" Download vim-plug command(for linux):
+""   curl -fLo ~/.vim/colors/iceberg.vim --create-dirs \
+""      https://raw.githubusercontent.com/cocopon/iceberg.vim/master/colors/iceberg.vim
+let s:vimplug_filepath = has("win32") ? 
+    \ expand("$HOME/vimfiles/autoload/plug.vim")  :
+    \ expand("$HOME/.vim/autoload/plug.vim") 
+if !filereadable(s:vimplug_filepath)
+    finish
+endif
+
+call plug#begin()
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-commentary'
+Plug 'cocopon/vaffle.vim'
+Plug 'machakann/vim-sandwich'
+Plug 'cohama/lexima.vim'
+Plug 'mattn/vim-sonictemplate'
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+if has('python3')
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+endif
+call plug#end()
+
+" Plugin configuration (lightline.vim)
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
+" Plugin configuration (lightline.vim)
+let g:lightline = {
+\   'colorscheme': 'wombat',
+\}
+
+" Plugin configuration (vim-lsp)
+let g:lsp_diagnostics_echo_cursor=1
+
+" Plugin configuration (asyncomplete.vim)
+let g:asyncomplete_auto_completeopt=0
+set completeopt=menuone,noinsert,noselect,preview
+
+" Plugin configuration (vim-sonictemplate)
+let s:sonictemplate_vim_template_dir= has("win32") ? 
+    \ expand("$HOME/vimfiles/templates")  :
+    \ expand("$HOME/.vim/templates") 
+let g:sonictemplate_vim_template_dir = [s:sonictemplate_vim_template_dir]
+
+" Plugin configuration (ultisnips)
+let s:ultisnips_snippet_dir = has("win32") ? 
+    \ expand("$HOME/vimfiles/snips")  :
+    \ expand("$HOME/.vim/snips") 
+let g:UltiSnipsSnippetDirectories = [s:ultisnips_snippet_dir]
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+
+" Plugin configuration (asyncomplete-ultisnips.vim)
+if has('python3')
+    call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+        \ 'name': 'ultisnips',
+        \ 'allowlist': ['*'],
+        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+        \ }))
+endif
+
+" Plugin configuration (lexima.vim)
+call lexima#add_rule({'char': '>', 'at': '=\%#', 'input': '> {', 'input_after': '}',
+\   'filetype': [
+\      'javascript',
+\      'typescript',
+\   ]
+\})
