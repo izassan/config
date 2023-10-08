@@ -3,6 +3,7 @@
 ""   curl -fLo ~/.vim/colors/iceberg.vim --create-dirs \
 ""      https://raw.githubusercontent.com/cocopon/iceberg.vim/master/colors/iceberg.vim
 set t_Co=256
+set background=dark
 let s:extend_colorscheme_filepath = has("win32") ?
     \ expand("$HOME/vimfiles/colors/iceberg.vim") :       
     \ expand("$HOME/.vim/colors/iceberg.vim")        
