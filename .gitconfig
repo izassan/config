@@ -1,0 +1,13 @@
+[core]
+    editor = vim
+    autocrlf = false
+
+[ghq]
+    root = "~/Projects"
+
+[ghq "https://localhost.devlocal"]
+    vcs = git
+    root = "~/LocalProjects"
+
+[include]
+    path = ~/.gitconfig.local
