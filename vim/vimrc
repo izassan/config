@@ -174,3 +174,10 @@ call lexima#add_rule({'char': '>', 'at': '=\%#', 'input': '> {', 'input_after': 
 \      'typescript',
 \   ]
 \})
+
+" Plugin configuration (vaffle.vim)
+let g:vaffle_auto_cd=1
+let g:vaffle_force_delete=1
+let g:vaffle_open_selected_split_position='rightbelow'
+let g:vaffle_open_selected_vsplit_position='rightbelow'
+
