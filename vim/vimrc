@@ -138,6 +138,12 @@ let g:lightline = {
 " Plugin configuration (vim-lsp)
 let g:lsp_diagnostics_echo_cursor=1
 
+nnoremap [LSP] <Nop>
+nmap <Space>l [LSP]
+
+nnoremap [LSP]r :LspRename<CR>
+nnoremap [LSP]a :LspCodeAction<CR>
+
 " Plugin configuration (asyncomplete.vim)
 let g:asyncomplete_auto_completeopt=0
 set completeopt=menuone,noinsert,noselect,preview
