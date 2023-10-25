@@ -1,0 +1,20 @@
+# vim: set ft=gitconfig :
+
+[core]
+	editor = vim
+	pager = less
+	autocrlf = false
+[commit]
+	template = ~/.config/gitmsg
+[color]
+	ui = auto
+[ghq]
+	root = ~/Projects
+[include]
+	path = ~/.config/git/config_local
+[ghq "http://git.localhost.home"]
+	vcs = git
+	root = ~/LocalProjects
+[ghq "http://git.localhost.corp"]
+	vcs = git
+	root = ~/LocalProjects
