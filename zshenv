@@ -10,9 +10,17 @@ export LC_ALL=ja_JP.UTF-8
 export LC_MESSAGES=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 
+export LOCALBIN=$HOME/.bin
+export PATH=$PATH:$LOCALBIN
+
 export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
 export PYTHONUSERBASE=$HOME/.local
-export PATH=$PATH:$GOPATH/bin:$PYTHONUSERBASE/bin
+export PATH=$PATH:$PYTHONUSERBASE/bin
+
+export VOLTA_HOME=$HOME/.config/volta
+export PATH=$PATH:$VOLTA_HOME/bin
 
 if [ -e $ZDOTDIR/.zshenv ];then
     source $ZDOTDIR/.zshenv
