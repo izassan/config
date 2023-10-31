@@ -58,22 +58,9 @@ alias aptar="sudo apt autoremove"
 alias py="python3"
 alias python="python3"
 
-# docker
-alias dr="sudo docker run -it"
-alias db="sudo docker build"
-alias dp="sudo docker ps"
-alias dpa="sudo docker ps -a"
-alias dpu="sudo docker pull"
-alias di="sudo docker images"
-alias dip="sudo docker image prune"
-
-# docker compose
-alias dcu="sudo docker compose up"
-alias dcud="sudo docker compose up -d"
-alias dcp="sudo docker compose ps"
-alias dcl="sudo docker compose logs"
-alias dcd="sudo docker compose down"
-alias dcdv="sudo docker compose down -v"
+# podman
+alias pd="podman"
+alias spd="sudo podman"
 
 # golang
 alias goinit="go mod init"
