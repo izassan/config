@@ -44,7 +44,13 @@ $env:PATH = "$env:PATH;$env:GOPATH\bin"
 alias "gst" "git status"
 alias "ga" "git add"
 alias "gap" "git add -p"
+alias "gc" "git commit"
+alias "gcm" "git commit -m"
+alias "gd" "git diff"
+alias "gs" "git switch"
+alias "gsc" "git switch -c"
 alias "cr" "ChangeRepository"
+alias "mp" "multipass"
 
 
 # key bindings
