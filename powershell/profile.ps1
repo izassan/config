@@ -24,6 +24,17 @@ function ChangeRepository(){
     Set-Location (ghq list --full-path | fzf)
 }
 
+function config_init(){
+    # install iceberg(vim colorscheme)
+    if(Test-Path $HOME/vimfiles/colors/iceberg.vim){ return }
+    curl.exe -fLo $HOME/vimfiles/colors/iceberg.vim --create-dirs `
+        https://raw.githubusercontent.com/cocopon/iceberg.vim/master/colors/iceberg.vim
+
+    # install vim-plug(vim plugin manager)
+    if(Test-Path $HOME/vimfiles/autoload/plug.vim){ return }
+    curl.exe -fLo $HOME/vimfiles/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
 
 # environment variables
 $env:PATH = "$env:PATH;$env:GOPATH\bin"
