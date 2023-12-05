@@ -4,9 +4,22 @@ for config_file in ~/.zsh/config/*.zsh; do
     source $config_file
 done
 
-# install 
-#     export ZPLUG_HOME=/path/to/.zplug (set to zsh configutation file)
-#     git clone https://github.com/zplug/zplug $ZPLUG_HOME
+# initilize config 
+function init_config(){
+    # install zplug
+    if [ -d $ZPLUG_HOME ];then return; fi
+    git clone https://github.com/zplug/zplug $ZPLUG_HOME
+
+    # install iceberg(vim colorscheme)
+    if [ -f ~/.vim/colors/iceberg.vim ];then return; fi
+    curl -fLo ~/.vim/colors/iceberg.vim --create-dirs \
+        https://raw.githubusercontent.com/cocopon/iceberg.vim/master/colors/iceberg.vim
+
+    # install vim-plug(vim plugin manager)
+    if [ -f ~/.vim/autoload/plug.vim ];then return; fi
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
 
 # define zsh plugins with ZPLUG
 if [ -d $ZPLUG_HOME ];then
