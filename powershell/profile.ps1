@@ -43,17 +43,26 @@ $env:PATH = "$env:PATH;$env:GOPATH\bin"
 
 
 # aliases
+alias "cr" "ChangeRepository"
+alias "op" "explorer.exe"
+alias "opc" "explorer.exe ."
+alias "br" "Start-Process chrome"
+
 alias "gst" "git status"
 alias "ga" "git add"
 alias "gap" "git add -p"
 alias "gc" "git commit"
 alias "gcm" "git commit -m"
 alias "gd" "git diff"
+alias "gdc" "git diff --cached"
 alias "gs" "git switch"
 alias "gsc" "git switch -c"
-alias "cr" "ChangeRepository"
-alias "mp" "multipass"
 
+alias "mp" "multipass"
+alias "mpl" "multipass list"
+alias "mpu" "multipass start"
+alias "mpd" "multipass stop"
+alias "mps" "multipass shell"
 
 # key bindings
 Import-Module PSReadline
