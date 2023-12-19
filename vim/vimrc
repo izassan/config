@@ -84,6 +84,23 @@ nnoremap sk <C-w>k
 nnoremap sh <C-w>h
 nnoremap sl <C-w>l
 nnoremap <C-c> ggVG"+y
+if has("win32")
+    if executable("pwsh")
+        nnoremap <Space>t :terminal pwsh<CR>
+        nnoremap <Space>T :terminal ++curwin pwsh<CR>
+    else
+        nnoremap <Space>t :terminal powershell<CR>
+        nnoremap <Space>T :terminal ++curwin powershell<CR>
+    endif
+else
+    if executable("zsh")
+        nnoremap <Space>t :terminal zsh<CR>
+        nnoremap <Space>T :terminal ++curwin zsh<CR>
+    else
+        nnoremap <Space>t :terminal bash<CR>
+        nnoremap <Space>T :terminal ++curwin bash<CR>
+    endif
+endif
 
 " Plugin manage
 let s:vimplug_filepath = has("win32") ? 
