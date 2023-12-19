@@ -67,3 +67,8 @@ alias "mps" "multipass shell"
 # key bindings
 Import-Module PSReadline
 Set-PSReadLineOption -EditMode Vi
+
+# load local configuration
+if(Test-Path $HOME/Documents/Powershell/profile_local.ps1){
+    . $HOME/Documents/Powershell/profile_local.ps1
+}
