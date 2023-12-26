@@ -86,19 +86,19 @@ nnoremap sl <C-w>l
 nnoremap <C-c> ggVG"+y
 if has("win32")
     if executable("pwsh")
-        nnoremap <Space>t :terminal pwsh<CR>
-        nnoremap <Space>T :terminal ++curwin pwsh<CR>
+        nnoremap <Space>t :terminal ++close pwsh<CR>
+        nnoremap <Space>T :terminal ++curwin ++close pwsh<CR>
     else
-        nnoremap <Space>t :terminal powershell<CR>
-        nnoremap <Space>T :terminal ++curwin powershell<CR>
+        nnoremap <Space>t :terminal ++close powershell<CR>
+        nnoremap <Space>T :terminal ++curwin ++close powershell<CR>
     endif
 else
     if executable("zsh")
-        nnoremap <Space>t :terminal zsh<CR>
-        nnoremap <Space>T :terminal ++curwin zsh<CR>
+        nnoremap <Space>t :terminal ++close zsh<CR>
+        nnoremap <Space>T :terminal ++curwin ++close zsh<CR>
     else
-        nnoremap <Space>t :terminal bash<CR>
-        nnoremap <Space>T :terminal ++curwin bash<CR>
+        nnoremap <Space>t :terminal ++close bash<CR>
+        nnoremap <Space>T :terminal ++curwin ++close bash<CR>
     endif
 endif
 
