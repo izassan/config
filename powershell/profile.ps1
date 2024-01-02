@@ -64,6 +64,7 @@ alias "mpu" "multipass start"
 alias "mpd" "multipass stop"
 alias "mps" "multipass shell"
 
+alias "cfg" "Set-Location $HOME/Config"
 # key bindings
 Import-Module PSReadline
 Set-PSReadLineOption -EditMode Vi

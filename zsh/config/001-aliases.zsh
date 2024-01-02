@@ -75,3 +75,4 @@ alias sbndb="spring init --build=gradle --dependencies=web,lombok"
 
 # other
 alias cl="clear"
+alias cfg="cd ~/Config"
