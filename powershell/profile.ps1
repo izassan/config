@@ -15,12 +15,12 @@ function b64 ([switch]$Decode, [string]$TargetValue){
     Write-Output $result
 }
 
-function IsExistCommand ($cmd){
+function command_exists($cmd){
     Get-Command $cmd -ea SilentlyContinue | Out-Null; return $?
 }
 
-function ChangeRepository(){
-    if(!(IsExistCommand "ghq" && IsExistCommand "fzf")){ return }
+function change_repository(){
+    if(!((command_exists "ghq") -And (command_exists "fzf"))){ return }
     Set-Location (ghq list --full-path | fzf)
 }
 
@@ -38,12 +38,19 @@ function config_init(){
     }
 }
 
+function ssh_copy_id(){
+    param($dest)
+    $cmd = "mkdir -p ~/.ssh && chmod 700 ~/.ssh &&"
+    $cmd = "$cmd cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+    Get-Content ~/.ssh/id_rsa.pub | ssh $dest "$cmd"
+}
+
 # environment variables
 $env:PATH = "$env:PATH;$env:GOPATH\bin"
 
 
 # aliases
-alias "cr" "ChangeRepository"
+alias "cr" "change_repository"
 alias "op" "explorer.exe"
 alias "opc" "explorer.exe ."
 alias "br" "Start-Process chrome"
@@ -65,6 +72,7 @@ alias "mpd" "multipass stop"
 alias "mps" "multipass shell"
 
 alias "cfg" "Set-Location $HOME/Config"
+alias "ssh-copy-id" "ssh_copy_id"
 # key bindings
 Import-Module PSReadline
 Set-PSReadLineOption -EditMode Vi
