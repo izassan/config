@@ -58,10 +58,6 @@ alias aptar="sudo apt autoremove"
 alias py="python3"
 alias python="python3"
 
-# podman
-alias pd="podman"
-alias spd="sudo podman"
-
 # golang
 alias goinit="go mod init"
 alias gorun="go run ./*.go"
@@ -76,3 +72,11 @@ alias sbndb="spring init --build=gradle --dependencies=web,lombok"
 # other
 alias cl="clear"
 alias cfg="cd ~/Config"
+alias kb="sudo kubectl"
+alias ssi="intractive_ssh"
+
+# ghq
+alias qh="ghq"
+alias qhc="ghq create"
+alias qhg="ghq get"
+alias qhp="ghq get -p"

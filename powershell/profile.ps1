@@ -70,9 +70,24 @@ alias "mpl" "multipass list"
 alias "mpu" "multipass start"
 alias "mpd" "multipass stop"
 alias "mps" "multipass shell"
+alias "mpc" "multipass shell dev-vm"
 
 alias "cfg" "Set-Location $HOME/Config"
 alias "ssh-copy-id" "ssh_copy_id"
+
+alias "wg" "winget"
+alias "wgi" "winget install"
+alias "wgl" "winget list"
+
+alias "lsn" "Get-ChildItem -Name"
+alias "rmr" "Remove-Item -Recurse"
+alias "rmrf" "Remove-Item -Recurse -Force"
+alias "exp" "Expand-Archive"
+alias "ec" "Write-Output"
+alias "mv" "Move-Item"
+alias "cp" "Copy-Item"
+alias "cpr" "Copy-Item -Recurse"
+
 # key bindings
 Import-Module PSReadline
 Set-PSReadLineOption -EditMode Vi

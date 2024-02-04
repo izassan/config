@@ -29,3 +29,17 @@ function install_zplug(){
         echo "zplug has already installed"
     fi
 }
+
+function intractive_ssh(){
+    SSH_CONFIG=$HOME/.ssh/config
+    if ! ( (( ${+commands[ssh]} )) || (( ${+commands[fzf]} )) ); then
+        return
+    fi
+    hosts=()
+    for i in `grep "^Host " $SSH_CONFIG | sed s/"^Host "//`
+    do
+        hosts=($hosts $i)
+    done
+    ssh_destination=$(echo -e ${(j:\n:)hosts} | fzf)
+    ssh $ssh_destination
+}
