@@ -1,1 +1,0 @@
-nnoremap Fr :source %<CR>

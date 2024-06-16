@@ -1,30 +1,6 @@
-# vim: ft=zsh
+source ~/.zsh/functions.zsh
+source ~/.zsh/aliases.zsh
 
-for config_file in ~/.zsh/config/*.zsh; do
-    source $config_file
-done
-
-# initilize config 
-function config_init(){
-    # install zplug
-    if [ ! -d $ZPLUG_HOME ];then
-        git clone https://github.com/zplug/zplug $ZPLUG_HOME
-    fi
-
-    # install iceberg(vim colorscheme)
-    if [ ! -f ~/.vim/colors/iceberg.vim ];then
-        curl -fLo ~/.vim/colors/iceberg.vim --create-dirs \
-            https://raw.githubusercontent.com/cocopon/iceberg.vim/master/colors/iceberg.vim
-    fi
-
-    # install vim-plug(vim plugin manager)
-    if [ ! -f ~/.vim/autoload/plug.vim ];then
-        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    fi
-}
-
-# define zsh plugins with ZPLUG
 if [ -d $ZPLUG_HOME ];then
     source $ZPLUG_HOME/init.zsh
 
@@ -37,40 +13,24 @@ if [ -d $ZPLUG_HOME ];then
     zplug load
 fi
 
-# color and complite
-autoload -Uz colors
-autoload -Uz compinit
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-
-compinit
-colors
-
-# vim mode
 bindkey -v
 
-# setoptions
+autoload -U colors; colors
+autoload -Uz add-zsh-hook
+
 setopt share_history
-setopt histignorealldups
+setopt hist_ignore_all_dups
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt correct
 setopt prompt_subst
 
-add-zsh-hook precmd set_command_result
-add-zsh-hook precmd vcs_info
+function set_prompt(){
+    PROMPT="`echo_prompt`"
+}
+add-zsh-hook precmd set_prompt
 
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "staged"
-zstyle ':vcs_info:git:*' unstagedstr "changed"
-zstyle ':vcs_info:*' formats "%b:%c%u"
-zstyle ':vcs_info:*' actionformats "%b:action:%a"
-
-# prompt
-PROMPT='`echo_left_prompt`'
-
-# load local config
-[ -r ~/.dotfiles.local/zshrc ] \
-    && . ~/.dotfiles.local/zshrc \
-    || :
+if [ -r $ZSH_LOCAL_CONFIG ];then
+    source $ZSH_LOCAL_CONFIG
+fi

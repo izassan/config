@@ -1,1 +1,6 @@
 git/config_local
+
+vim/.netrwhist
+vim/plugged
+vim/autoload/plug.vim
+vim/colors/iceberg.vim

@@ -1,10 +1,11 @@
+" Load Fucntions
+runtime! functions.vim
+
+
 " Color
 set t_Co=256
 set background=dark
-let s:extend_colorscheme_filepath = has("win32") ?
-    \ expand("$HOME/vimfiles/colors/iceberg.vim") :       
-    \ expand("$HOME/.vim/colors/iceberg.vim")        
-if filereadable(s:extend_colorscheme_filepath)
+if filereadable(GetIcebergPath())
     colorscheme iceberg
 endif
 
@@ -54,6 +55,15 @@ set showcmd
 set display=lastline
 
 
+" GVim configuration
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions+=a
+    set guioptions+=R
+endif
+
+
 " Python3
 if has("win32")
 let s:pythonthreehome = expand("$HOME/AppData/Local/Programs/Python/Python312")
@@ -62,13 +72,10 @@ let &pythonthreehome=s:pythonthreehome
 let &pythonthreedll=s:pythonthreedll
 endif
 
-" GVim configuration
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=m
-    set guioptions+=a
-    set guioptions+=R
-endif
+
+" Custom Commands
+command! -nargs=0 ConfigInit :call ConfigInit()
+command! -nargs=0 CopyFileContent :call CopyFileContent()
 
 
 " Key mapping
@@ -83,30 +90,13 @@ nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sh <C-w>h
 nnoremap sl <C-w>l
-nnoremap <C-c> ggVG"+y
-if has("win32")
-    if executable("pwsh")
-        nnoremap <Space>t :terminal ++close pwsh<CR>
-        nnoremap <Space>T :terminal ++curwin ++close pwsh<CR>
-    else
-        nnoremap <Space>t :terminal ++close powershell<CR>
-        nnoremap <Space>T :terminal ++curwin ++close powershell<CR>
-    endif
-else
-    if executable("zsh")
-        nnoremap <Space>t :terminal ++close zsh<CR>
-        nnoremap <Space>T :terminal ++curwin ++close zsh<CR>
-    else
-        nnoremap <Space>t :terminal ++close bash<CR>
-        nnoremap <Space>T :terminal ++curwin ++close bash<CR>
-    endif
-endif
+nnoremap <C-c> :CopyFileContent<CR>
+let g:use_shell = has("win32") ? "pwsh" : "zsh"
+nnoremap <Space>t :execute("terminal ++close " . g:use_shell)<CR>
+nnoremap <Space>T :execute("terminal ++curwin ++close " . g:use_shell)<CR>
 
 " Plugin manage
-let s:vimplug_filepath = has("win32") ? 
-    \ expand("$HOME/vimfiles/autoload/plug.vim")  :
-    \ expand("$HOME/.vim/autoload/plug.vim") 
-if !filereadable(s:vimplug_filepath)
+if !filereadable(GetVimPlugPath())
     finish
 endif
 
@@ -118,22 +108,10 @@ Plug 'machakann/vim-sandwich'
 Plug 'cohama/lexima.vim'
 Plug 'mattn/vim-sonictemplate'
 Plug 'thinca/vim-qfreplace'
-Plug 'kana/vim-repeat'
-Plug 'ap/vim-css-color'
 Plug 'thinca/vim-quickrun'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-fold'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-operator-user'
-Plug 'kana/vim-operator-replace'
 Plug 'previm/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'mattn/vim-maketable'
-Plug 'mattn/vim-findroot'
-Plug 'mattn/emmet-vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
-
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
@@ -147,6 +125,7 @@ if has('python3')
 endif
 call plug#end()
 
+
 " Plugin configuration (netrw)
 let g:netrw_banner=0
 let g:netrw_sizestyle="H"
@@ -155,16 +134,18 @@ let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 let g:netrw_preview=1
 let g:netrw_home=expand("$HOME")
 
-" Plugin configuration (lightline.vim)
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
+
 
 " Plugin configuration (lightline.vim)
 let g:lightline = {
 \   'colorscheme': 'wombat',
 \}
 
+
 " Plugin configuration (vim-lsp)
+" let g:lsp_log_file = expand('~/vim-lsp.log')
 let g:lsp_diagnostics_echo_cursor=1
 
 nnoremap [LSP] <Nop>
@@ -173,25 +154,34 @@ nmap <Space>l [LSP]
 nnoremap [LSP]r :LspRename<CR>
 nnoremap [LSP]a :LspCodeAction<CR>
 
+
+" Plugin configuration (vim-lsp-settings)
+if has("win32")
+    let g:lsp_settings = {
+    \   'powershell-languageserver': {
+    \       'cmd': [ expand(GetVimConfigDir() . '/scripts/powershell-core-languageserver.cmd') ],
+    \   },
+    \}
+endif
+
+
 " Plugin configuration (asyncomplete.vim)
 let g:asyncomplete_auto_completeopt=0
 set completeopt=menuone,noinsert,noselect,preview
 
+
 " Plugin configuration (vim-sonictemplate)
-let s:sonictemplate_vim_template_dir= has("win32") ? 
-    \ expand("$HOME/vimfiles/templates")  :
-    \ expand("$HOME/.vim/templates") 
-let g:sonictemplate_vim_template_dir = [s:sonictemplate_vim_template_dir]
+let g:sonictemplate_vim_template_dir = [expand(GetVimConfigDir() . "/templates")]
+
 
 " Plugin configuration (ultisnips)
-let s:ultisnips_snippet_dir = has("win32") ? 
-    \ expand("$HOME/vimfiles/snips")  :
-    \ expand("$HOME/.vim/snips") 
-let g:UltiSnipsSnippetDirectories = [s:ultisnips_snippet_dir]
+let g:UltiSnipsEnableSnipMate = 0
+let g:UltiSnipsSnippetDirectories = [expand(GetVimConfigDir() . "/snippets")]
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+
 
 " Plugin configuration (asyncomplete-ultisnips.vim)
 if has('python3')
@@ -202,13 +192,6 @@ if has('python3')
         \ }))
 endif
 
-" Plugin configuration (lexima.vim)
-call lexima#add_rule({'char': '>', 'at': '=\%#', 'input': '> {', 'input_after': '}',
-\   'filetype': [
-\      'javascript',
-\      'typescript',
-\   ]
-\})
 
 " Plugin configuration (vaffle.vim)
 let g:vaffle_auto_cd=1
@@ -216,3 +199,5 @@ let g:vaffle_force_delete=1
 let g:vaffle_open_selected_split_position='rightbelow'
 let g:vaffle_open_selected_vsplit_position='rightbelow'
 
+" Load Local Configuration
+set runtimepath+=$HOME/local_config/vim

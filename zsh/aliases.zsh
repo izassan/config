@@ -1,31 +1,23 @@
-# global aliases
 alias -g G='| grep'
 alias -g E='2> /dev/null'
 alias -g Z='> /dev/null'
 
-# ls
 alias l="ls --color=auto"
 alias ls="ls --color=auto"
 alias la="ls -a --color=auto"
 alias ll="ls -al --color=auto"
 
-# cd
 alias ..="cd .."
 alias ..2="cd_parent 2"
 alias ..3="cd_parent 3"
 alias cdg="cd-gitroot"
 
-# safe commands
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 
-# vim
-alias vi="vim"
-alias ve="vim ."
-alias memo="vim -c TakeMemo"
+alias v="vim ."
 
-# git
 alias gst="git status"
 alias gl="git log"
 alias glo="git log --oneline"
@@ -49,34 +41,6 @@ alias gpu="git pull"
 alias gf="git fetch"
 alias gcl="git clone"
 
-# apt
-alias aptup="sudo apt update && sudo apt upgrade -y"
-alias apti="sudo apt install -y"
-alias aptar="sudo apt autoremove"
+alias uapt="sudo apt update && sudo apt upgrade -y"
 
-# python
-alias py="python3"
-alias python="python3"
-
-# golang
-alias goinit="go mod init"
-alias gorun="go run ./*.go"
-alias gobld="go build ./*.go"
-alias gog="go get"
-alias goi="go install"
-
-# spring
-alias sbmvc="spring init --build=gradle --dependencies=web,h2,data-jpa,lombok"
-alias sbndb="spring init --build=gradle --dependencies=web,lombok"
-
-# other
 alias cl="clear"
-alias cfg="cd ~/Config"
-alias kb="sudo kubectl"
-alias ssi="intractive_ssh"
-
-# ghq
-alias qh="ghq"
-alias qhc="ghq create"
-alias qhg="ghq get"
-alias qhp="ghq get -p"

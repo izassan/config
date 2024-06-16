@@ -1,22 +1,14 @@
 # vim: set ft=gitconfig :
 
-[init]
-	defaultBranch = main
 [core]
-	editor = vim
-	pager = less
-	autocrlf = false
+    editor = vim
+    autocrlf = false
+    excludesfile = ~/.config/git/ignore
 [commit]
-	template = ~/.config/gitmsg
-[color]
-	ui = auto
+    template = ~/.config/git/commit_template
 [ghq]
-	root = ~/Projects
+    root = ~/local/projects
+[ghq "https://izassan.net"]
+    vcs = git
 [include]
-	path = ~/.config/git/config_local
-[ghq "http://git.localhost.home"]
-	vcs = git
-	root = ~/LocalProjects
-[ghq "http://git.localhost.corp"]
-	vcs = git
-	root = ~/LocalProjects
+    path = ~/local_config/gitconfig
