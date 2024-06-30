@@ -118,11 +118,8 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-if has('python3')
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-    Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-endif
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 call plug#end()
 
 
@@ -145,7 +142,7 @@ let g:lightline = {
 
 
 " Plugin configuration (vim-lsp)
-" let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:lsp_log_file = expand('~/vim-lsp.log')
 let g:lsp_diagnostics_echo_cursor=1
 
 nnoremap [LSP] <Nop>
@@ -174,30 +171,24 @@ set completeopt=menuone,noinsert,noselect,preview
 let g:sonictemplate_vim_template_dir = [expand(GetVimConfigDir() . "/templates")]
 
 
-" Plugin configuration (ultisnips)
-let g:UltiSnipsEnableSnipMate = 0
-let g:UltiSnipsSnippetDirectories = [expand(GetVimConfigDir() . "/snippets")]
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-
-
-" Plugin configuration (asyncomplete-ultisnips.vim)
-if has('python3')
-    call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-        \ 'name': 'ultisnips',
-        \ 'allowlist': ['*'],
-        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-        \ }))
-endif
-
-
 " Plugin configuration (vaffle.vim)
 let g:vaffle_auto_cd=1
 let g:vaffle_force_delete=1
 let g:vaffle_open_selected_split_position='rightbelow'
 let g:vaffle_open_selected_vsplit_position='rightbelow'
+
+" Plugin configuration (vim-vsnip)
+let g:vsnip_snippet_dir = expand(GetVimConfigDir() . "/snippets")
+
+imap <expr> <Tab> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes.typescriptreact = ['typescript']
+
 
 " Load Local Configuration
 set runtimepath+=$HOME/local_config/vim

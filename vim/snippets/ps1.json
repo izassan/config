@@ -1,0 +1,37 @@
+{
+    "GetRequest": {
+        "prefix": ["request_get"],
+        "body": [
+            "Invoke-WebRequest -Method Get -Uri $1 -SkipHttpErrorCheck $2"
+        ],
+        "description": "requuestget"
+    },
+    "PostRequest": {
+        "prefix": ["request_post"],
+        "body": [
+            "Invoke-WebRequest -Method Post -Uri $1 -SkipHttpErrorCheck $2 -Body $3 $4"
+        ],
+        "description": "requuestget"
+    },
+    "PostFormRequest": {
+        "prefix": ["request_postform"],
+        "body": [
+            "Invoke-WebRequest -Method Post -Uri $1 -SkipHttpErrorCheck $2 -Form $3 $4"
+        ],
+        "description": "requuestget"
+    },
+    "PutRequest": {
+        "prefix": ["request_put"],
+        "body": [
+            "Invoke-WebRequest -Method Put -Uri $1 -SkipHttpErrorCheck $2 -Body $3 $4"
+        ],
+        "description": "requuestget"
+    },
+    "DeleteRequest": {
+        "prefix": ["request_delete"],
+        "body": [
+            "Invoke-WebRequest -Method Delete -Uri $1 -SkipHttpErrorCheck $2"
+        ],
+        "description": "requuestget"
+    }
+}
