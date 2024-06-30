@@ -168,7 +168,10 @@ set completeopt=menuone,noinsert,noselect,preview
 
 
 " Plugin configuration (vim-sonictemplate)
-let g:sonictemplate_vim_template_dir = [expand(GetVimConfigDir() . "/templates")]
+let g:sonictemplate_vim_template_dir = [
+\    expand(GetVimConfigDir() . "/templates"),
+\    expand("$HOME/local_config/vim/templates"),
+\]
 
 
 " Plugin configuration (vaffle.vim)
@@ -178,7 +181,10 @@ let g:vaffle_open_selected_split_position='rightbelow'
 let g:vaffle_open_selected_vsplit_position='rightbelow'
 
 " Plugin configuration (vim-vsnip)
-let g:vsnip_snippet_dir = expand(GetVimConfigDir() . "/snippets")
+let g:vsnip_snippet_dirs = [
+\    expand(GetVimConfigDir() . "/snippets"),
+\    expand("$HOME/local_config/vim/snippets")
+\]
 
 imap <expr> <Tab> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
 smap <expr> <Tab> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
