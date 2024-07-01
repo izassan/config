@@ -1,37 +1,57 @@
 {
-    "GetRequest": {
-        "prefix": ["request_get"],
+    "Request": {
+        "prefix": ["request"],
+        "description": "request get",
         "body": [
-            "Invoke-WebRequest -Method Get -Uri $1 -SkipHttpErrorCheck $2"
-        ],
-        "description": "requuestget"
+            "\\$${1:resp} = Invoke-WebRequest -Method Get -Uri $2 -SkipHttpErrorCheck $3",
+            "if(\\$$1 ${4:-eq} ${5:200}){",
+            "\t${6:Write-Host \"request failed\"}",
+            "}",
+            "\\$${7:content} = \\$$1.Content | ConvertFrom-Json",
+            "$8"
+        ]
     },
-    "PostRequest": {
-        "prefix": ["request_post"],
+    "Function": {
+        "prefix": ["func"],
+        "description": "standard function",
         "body": [
-            "Invoke-WebRequest -Method Post -Uri $1 -SkipHttpErrorCheck $2 -Body $3 $4"
-        ],
-        "description": "requuestget"
+            "function $1(){",
+            "\tParam(",
+            "\t\t$2",
+            "\t)",
+            "\t$3",
+            "}"
+        ]
     },
-    "PostFormRequest": {
-        "prefix": ["request_postform"],
+    "FunctionNoArgument": {
+        "prefix": ["func_noarg"],
+        "description": "standard function no argument",
         "body": [
-            "Invoke-WebRequest -Method Post -Uri $1 -SkipHttpErrorCheck $2 -Form $3 $4"
-        ],
-        "description": "requuestget"
+            "function $1(){",
+            "\t$2",
+            "}"
+        ]
     },
-    "PutRequest": {
-        "prefix": ["request_put"],
-        "body": [
-            "Invoke-WebRequest -Method Put -Uri $1 -SkipHttpErrorCheck $2 -Body $3 $4"
-        ],
-        "description": "requuestget"
-    },
-    "DeleteRequest": {
-        "prefix": ["request_delete"],
-        "body": [
-            "Invoke-WebRequest -Method Delete -Uri $1 -SkipHttpErrorCheck $2"
-        ],
-        "description": "requuestget"
+    "LoadExcel": {
+        "prefix": ["excel_load"],
+        "description": "load excel",
+        "body":[
+            "\\$excel = New-Object -ComObject Excel.Application",
+            "\\$book = $null",
+            "try{",
+            "\t\\$excel.Visible = $false",
+            "\t\\$book = \\$excel.Workbooks.Open((Convert-Path $1))",
+            "",
+            "\t$2",
+            "}finally{",
+            "\tif(\\$null -eq \\$book){",
+            "\t\t[void]\\$book.Close(\\$false)",
+            "\t\t[System.Runtime.Interopservices.Marshal]::ReleaseComObject(\\$book)",
+            "\t}",
+            "\t[void]\\$excel.Quit()",
+            "\t[System.Runtime.Interopservices.Marshal]::ReleaseComObject(\\$excel)",
+            "}"
+        ]
+
     }
 }
