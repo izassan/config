@@ -142,8 +142,10 @@ let g:lightline = {
 
 
 " Plugin configuration (vim-lsp)
-let g:lsp_log_file = expand('~/vim-lsp.log')
 let g:lsp_diagnostics_echo_cursor=1
+
+" for debug
+" let g:lsp_log_file = expand('~/vim-lsp.log')
 
 nnoremap [LSP] <Nop>
 nmap <Space>l [LSP]
