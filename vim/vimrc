@@ -120,6 +120,11 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+
+if executable("fzf")
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+endif
 call plug#end()
 
 
