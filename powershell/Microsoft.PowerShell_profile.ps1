@@ -52,7 +52,7 @@ function mps(){ multipass shell devvm }
 function mpt(){ multipass exec -- devvm tmux }
 
 # Set environment variables
-$env:GOPATH = "$HOME\local\go"
+$env:GOPATH = "$HOME\local\opt\go"
 $env:PYTHONUSERBASE = "$HOME\local\pip"
 $env:PATH = "$env:PATH;$env:GOPATH\bin;$env:PYTHONUSERBASE\$USEPYTHONVERSION\Scripts"
 
