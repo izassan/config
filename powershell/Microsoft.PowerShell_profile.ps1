@@ -12,9 +12,12 @@ Set-Alias rm Remove-Item
 Set-Alias mv Move-Item
 Set-Alias cp Copy-Item
 Set-Alias cl Clear-Host
-Set-Alias echo Write-Output
 Set-Alias cfj ConvertFrom-Json
 Set-Alias tee Tee-Object
+Set-Alias % ForEach-Object
+Set-Alias ? Where-Object
+Set-Alias sort Sort-Object
+Set-Alias cat Get-Content
 
 function ls(){ Get-ChildItem -Exclude _*,.* $Args }
 function lsn(){ Get-ChildItem -Name -Exclude _*,.* $Args }
@@ -25,7 +28,7 @@ function mkdir(){ New-Item -ItemType Directory -Force -Path $Args }
 function ctj([Parameter(Mandatory,ValueFromPipeLine)]$inputObject, $depth = 10){ ConvertTo-Json -Depth $depth -InputObject $inputObject }
 function op(){ explorer.exe $Args }
 function opc(){ explorer.exe . $Args }
-function touch($fp){ Out-File -InputObject "" -FilePath "$fp" }
+function touch([Parameter(Mandatory)]$fp){ Out-File -InputObject "" -FilePath "$fp" }
 function v(){ vim . }
 
 function gst(){ git status $Args }
