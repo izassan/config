@@ -1,11 +1,9 @@
 # Import-Modules
 Import-Module PSReadline
+Import-Module "${PSScriptRoot}\Modules\SelfModule.Functions"
 
 # Remove all default aliases
 Remove-Item -Force alias:*
-
-# Load other script files
-. $PSScriptRoot\functions.ps1
 
 # Set aliaes
 Set-Alias clear Clear-Host
