@@ -1,3 +1,6 @@
+# Import-Modules
+Import-Module PSReadline
+
 # Remove all default aliases
 Remove-Item -Force alias:*
 
@@ -18,6 +21,7 @@ Set-Alias % ForEach-Object
 Set-Alias ? Where-Object
 Set-Alias sort Sort-Object
 Set-Alias cat Get-Content
+Set-Alias srl Set-RepositoryLocation
 
 function ls(){ Get-ChildItem -Exclude _*,.* $Args }
 function lsn(){ Get-ChildItem -Name -Exclude _*,.* $Args }
@@ -56,9 +60,11 @@ $env:GOPATH = "$HOME\local\opt\go"
 $env:PYTHONUSERBASE = "$HOME\local\pip"
 $env:PATH = "$env:PATH;$env:GOPATH\bin;$env:PYTHONUSERBASE\$USEPYTHONVERSION\Scripts"
 
-# Set vi keybindings
-Import-Module PSReadline
+# Add vi keybinding mode
 Set-PSReadLineOption -EditMode Vi
+
+# Set History Settings
+Set-PSReadLineOption -HistoryNoDuplicates
 
 # Set Prompt
 function prompt {

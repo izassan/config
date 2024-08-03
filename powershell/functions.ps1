@@ -58,3 +58,17 @@ function Compress-ZipArchive(){
     [System.IO.Compression.ZipFile]::CreateFromDirectory($c, $z)
     Write-Host "compressed to $zipFilePath"
 }
+
+function Set-RepositoryLocation(){
+    if(-Not(Test-CommandExist "fzf")){
+        Write-Host "require 'fzf'"
+        return
+    }elseif(-Not(Test-CommandExist "ghq")){
+        Write-Host "require 'ghq'"
+        return
+    }
+    $rp = ghq list -p | fzf
+    if($null -ne $rp){
+        Set-Location $rp
+    }
+}
