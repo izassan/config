@@ -28,12 +28,13 @@ class Config{
 
 function Start-InitializeMyPC(){
     $initPaths = @(
-        "$HOME\local_config",
+        "$HOME\local\bin",
         "$HOME\local\doc",
         "$HOME\local\etc",
         "$HOME\local\lib",
         "$HOME\local\opt",
-        "$HOME\local\bin"
+        "$HOME\local\projects",
+        "$HOME\local_config"
     )
     $initPaths | ForEach-Object { New-Item -ItemType Directory -Force -Path $_ | Out-Null }
 }
