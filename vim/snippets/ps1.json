@@ -1,14 +1,43 @@
 {
-    "Request": {
-        "prefix": ["request"],
-        "description": "request get",
+    "GetHttpRequest": {
+        "prefix": ["getreq"],
+        "description": "invoke request get method",
         "body": [
-            "\\$${1:resp} = Invoke-WebRequest -Method Get -Uri $2 -SkipHttpErrorCheck $3",
-            "if(\\$$1 ${4:-eq} ${5:200}){",
-            "\t${6:Write-Host \"request failed\"}",
-            "}",
-            "\\$${7:content} = \\$$1.Content | ConvertFrom-Json",
-            "$8"
+            "\\$${1:resp} = Invoke-WebRequest -Method Get -Uri $2 -SkipHttpErrorCheck$3",
+            "$0"
+        ]
+    },
+    "PostHttpRequest": {
+        "prefix": ["postreq"],
+        "description": "invoke request post method",
+        "body": [
+            "\\$${1:resp} = Invoke-WebRequest -Method Post -Uri $2 -SkipHttpErrorCheck -Body $4",
+            "$0"
+        ]
+    },
+    "PutHttpRequest": {
+        "prefix": ["putreq"],
+        "description": "invoke request put method",
+        "body": [
+            "\\$${1:resp} = Invoke-WebRequest -Method Put -Uri $2 -SkipHttpErrorCheck -Body $4",
+            "$0"
+        ]
+    },
+    "DeleteHttpRequest": {
+        "prefix": ["deletereq"],
+        "description": "invoke request delete method",
+        "body": [
+            "\\$${1:resp} = Invoke-WebRequest -Method Delete -Uri $2 -SkipHttpErrorCheck$3",
+            "$0"
+        ]
+    },
+    "CheckStatusCode": {
+        "prefix": ["checkreq"],
+        "description": "check request http statuscode",
+        "body": [
+            "if(${1:\\$resp.StatusCode} ${2:-eq} ${3:200}){",
+            "    ${4:Write-Host \"request failed\"}",
+            "}$0"
         ]
     },
     "Function": {
@@ -16,42 +45,37 @@
         "description": "standard function",
         "body": [
             "function $1(){",
-            "\tParam(",
-            "\t\t$2",
-            "\t)",
-            "\t$3",
+            "    $0",
             "}"
         ]
     },
-    "FunctionNoArgument": {
-        "prefix": ["func_noarg"],
-        "description": "standard function no argument",
+    "FunctionParam": {
+        "prefix": ["funcparam"],
+        "description": "standard function",
         "body": [
             "function $1(){",
-            "\t$2",
+            "    Param(",
+            "         $0",
+            "    )",
             "}"
         ]
     },
-    "LoadExcel": {
-        "prefix": ["excel_load"],
-        "description": "load excel",
-        "body":[
-            "\\$excel = New-Object -ComObject Excel.Application",
-            "\\$book = $null",
-            "try{",
-            "\t\\$excel.Visible = $false",
-            "\t\\$book = \\$excel.Workbooks.Open((Convert-Path $1))",
-            "",
-            "\t$2",
-            "}finally{",
-            "\tif(\\$null -eq \\$book){",
-            "\t\t[void]\\$book.Close(\\$false)",
-            "\t\t[System.Runtime.Interopservices.Marshal]::ReleaseComObject(\\$book)",
-            "\t}",
-            "\t[void]\\$excel.Quit()",
-            "\t[System.Runtime.Interopservices.Marshal]::ReleaseComObject(\\$excel)",
-            "}"
+    "FunctionParameters": {
+        "prefix": ["param"],
+        "description": "standard function",
+        "body": [
+            "Param(",
+            "    $1",
+            ")",
+            "$0"
         ]
-
+    },
+    "MandatoryParameter": {
+        "prefix": ["mandatory"],
+        "description": "mandatory parameter",
+        "body": [
+            "[Parameter(Mandatory)]\\$$1${2:,}",
+            "$0"
+        ]
     }
 }
