@@ -1,0 +1,60 @@
+snippet ? "Where-Object"
+Where-Object { $1 ${2:-eq} $3 }
+endsnippet
+
+snippet so "Sort-Object"
+Sort-Object
+endsnippet
+
+snippet ss "Select-Object"
+Select-Object -Property $1
+endsnippet
+
+snippet % "ForEach-Object"
+ForEach-Object { $1 }
+endsnippet
+
+snippet echo "Write-Host"
+Write-Host "$1"
+endsnippet
+
+snippet func "standard function"
+function $1(){
+	$2
+}
+endsnippet
+
+snippet funcp "standard function with arguments"
+function $1(){
+	Param(
+		$2
+	)
+}
+endsnippet
+
+snippet mandatory "mandatory parameter"
+[Parameter(Mandatory)]\$$1
+$2
+endsnippet
+
+snippet getreq "invoke request get method"
+\$${1:resp} = Invoke-WebRequest -Method Get -Uri $2 -SkipHttpErrorCheck$3
+endsnippet
+
+snippet postreq "invoke request post method"
+\$${1:resp} = Invoke-WebRequest -Method Post -Uri $2 -SkipHttpErrorCheck -Body $3
+endsnippet
+
+snippet putreq "invoke request put method"
+\$${1:resp} = Invoke-WebRequest -Method Put -Uri $2 -SkipHttpErrorCheck -Body $3
+endsnippet
+
+snippet deletereq "invoke request delete method"
+\$${1:resp} = Invoke-WebRequest -Method Delete -Uri $2 -SkipHttpErrorCheck$3
+endsnippet
+
+snippet checkreq "check request http statuscode"
+if(${1:\$resp.StatusCode} ${2:-eq} ${3:200}){
+    ${4:Write-Host "request failed"}
+}$5
+endsnippet

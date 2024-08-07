@@ -118,8 +118,11 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
+if has('python3')
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+endif
 
 if executable("fzf")
 Plug 'junegunn/fzf'
@@ -187,20 +190,27 @@ let g:vaffle_force_delete=1
 let g:vaffle_open_selected_split_position='rightbelow'
 let g:vaffle_open_selected_vsplit_position='rightbelow'
 
-" Plugin configuration (vim-vsnip)
-let g:vsnip_snippet_dirs = [
-\    expand(GetVimConfigDir() . "/snippets"),
-\    expand("$HOME/local_config/vim/snippets")
+
+" Plugin configuration (ultisnips)
+let g:UltiSnipsEnableSnipMate=0
+let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = expand(GetVimConfigDir() . "/snips/common")
+let g:UltiSnipsSnippetDirectories = [
+\    expand(GetVimConfigDir() . "/snips/common"),
+\    expand("$HOME/local_config/vim/snips/common")
 \]
 
-imap <expr> <Tab> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab> vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+if has('python3')
+    let g:UltiSnipsExpandTrigger="<Tab>"
+    call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+        \ 'name': 'ultisnips',
+        \ 'allowlist': ['*'],
+        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+        \ }))
+endif
 
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.javascriptreact = ['javascript']
-let g:vsnip_filetypes.typescriptreact = ['typescript']
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 
 " Load Local Configuration
