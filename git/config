@@ -1,5 +1,7 @@
 # vim: set ft=gitconfig :
 
+[init]
+	defaultBranch = main
 [core]
     editor = vim
     autocrlf = false
