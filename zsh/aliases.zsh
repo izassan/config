@@ -12,6 +12,9 @@ alias ..2="cd_parent 2"
 alias ..3="cd_parent 3"
 alias cdg="cd-gitroot"
 
+alias cl="clear"
+alias cfg="cd ~/Config"
+
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
@@ -41,6 +44,6 @@ alias gpu="git pull"
 alias gf="git fetch"
 alias gcl="git clone"
 
-alias uapt="sudo apt update && sudo apt upgrade -y"
-
-alias cl="clear"
+alias kb="kubectl"
+alias kbg="kubectl get"
+alias kba="kubectl apply"

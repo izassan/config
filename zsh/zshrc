@@ -1,4 +1,5 @@
 source ~/.zsh/functions.zsh
+source ~/.zsh/prompt.zsh
 source ~/.zsh/aliases.zsh
 
 if [ -d $ZPLUG_HOME ];then
@@ -15,6 +16,9 @@ fi
 
 bindkey -v
 
+zle -N change_repository change_repository
+bindkey '^g' change_repository
+
 autoload -U colors; colors
 autoload -Uz add-zsh-hook
 
@@ -27,7 +31,8 @@ setopt correct
 setopt prompt_subst
 
 function set_prompt(){
-    PROMPT="`echo_prompt`"
+    PROMPT="`set_left_prompt`"
+    RPROMPT="`set_right_prompt`"
 }
 add-zsh-hook precmd set_prompt
 

@@ -10,6 +10,9 @@ export HISTFILE=~/.zsh_history
 export ZPLUG_HOME=~/.zplug
 export ZSH_LOCAL_CONFIG=~/local_config/zshrc
 
+export GOPATH="$HOME/local/opt/go"
+export PATH="$PATH:$GOPATH/bin"
+
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
