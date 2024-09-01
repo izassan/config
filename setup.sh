@@ -16,4 +16,5 @@ ln -sfnv $PWD/picom.conf $HOME/.config/picom.conf
 ln -sfnv $PWD/i3 $HOME/.config/i3
 ln -sfnv $PWD/rofi $HOME/.config/rofi
 ln -sfnv $PWD/conky $HOME/.config/conky
+ln -sfnv $PWD/polybar $HOME/.config/polybar
 ln -sfnv $PWD/terminator $HOME/.config/terminator

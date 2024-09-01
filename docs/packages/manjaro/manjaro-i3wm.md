@@ -14,6 +14,9 @@
 # application launcher
 - rofi
 
+# status bar
+- polybar
+
 # terminal emulator
 - terminator
 
