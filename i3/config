@@ -21,12 +21,12 @@ font pango:monospace 8
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 # exec --no-startup-id dex --autostart --environment i3
 
-exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 
-exec --no-startup-id fcitx5
-exec --no-startup-id picom -b
+exec_always --no-startup-id fcitx5
+exec_always --no-startup-id picom -b
 
-exec --no-startup-id conky
+exec_always --no-startup-id conky
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -37,7 +37,7 @@ exec --no-startup-id conky
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+exec_always --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -48,10 +48,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up l
+set $up j
 set $down k
-set $left j
-set $right semicolon
+set $left h
+set $right l
 
 # use Mouse+Mod4 to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -100,10 +100,7 @@ bindsym Mod4+Shift+Up move up
 bindsym Mod4+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+h split h
-
-# split in vertical orientation
-bindsym Mod4+v split v
+bindsym Mod4+o split toggle
 
 # enter fullscreen mode for the focused container
 bindsym Mod4+f fullscreen toggle
@@ -222,4 +219,4 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #######################################################################
 # exec i3-config-wizard
 
-gaps inner 8
+gaps inner 15
