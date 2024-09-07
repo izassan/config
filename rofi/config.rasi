@@ -1,5 +1,5 @@
 configuration {
-    modi: "system:~/.config/rofi/rofi_system.sh,appset:~/.config/rofi/rofi_appset.sh,drun,window,ssh";
+    modi: "drun,window,system:~/.config/rofi/rofi_system.sh";
     sidebar-mode: true;
     hide-scrollbar: true;
     kb-cancel: "Escape,Control+bracketleft";
