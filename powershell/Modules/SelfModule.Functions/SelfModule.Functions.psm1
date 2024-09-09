@@ -82,11 +82,11 @@ function Set-Proxy(){
         [string]$ProxyUser,
         [string]$ProxyPass
     )
-    $proxyFQDN = "${ProxyHost}:${ProxyPort}}"
+    $proxyFQDN = "${ProxyHost}:${ProxyPort}"
     if($ProxyDomain -ne ""){ $proxyFQDN = $ProxyDomain }
     $proxyAddress = "http://${proxyFQDN}"
     if($ProxyType -eq "authproxy"){
-        $proxyAddress = "http://${ProxyUser}:${ProxyPass}}@${proxyFQDN}"
+        $proxyAddress = "http://${ProxyUser}:${ProxyPass}@${proxyFQDN}"
         $securePass = ConvertTo-SecureString $ProxyPass -AsPlainText -Force
         $cred = New-Object System.Management.Automation.PSCredential `
                 $ProxyUser, $securePass
