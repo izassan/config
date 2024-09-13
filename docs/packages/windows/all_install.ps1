@@ -3,6 +3,7 @@ if(!(Get-Command scoop -ea SilentlyContinue)){
 }
 
 scoop bucket add extras
+scoop bucket add izassan https://github.com/izassan/scoop-bucket
 
 foreach($l in Get-Content .\windows.md) {
     if($l.StartsWith("#")){ continue }

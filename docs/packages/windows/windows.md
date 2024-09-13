@@ -1,9 +1,10 @@
 # text editor
-- vim
+- vim-izassan-custom
 - vscode
 
-# terminal emulator
+# terminal
 - windows-terminal 
+- winpty
 
 # programming language
 - go
