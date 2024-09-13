@@ -66,12 +66,15 @@ endif
 
 " Python3
 if has("win32")
-let s:pythonthreehome = expand("$HOME/AppData/Local/Programs/Python/Python312")
-let s:pythonthreedll = expand("$HOME/AppData/Local/Programs/Python/Python312/python312.dll")
+let s:pythonthreehome = expand("$HOME/scoop/apps/python/current")
+let s:pythonthreedll = expand(" $HOME/scoop/apps/python/current/python3.dll")
 let &pythonthreehome=s:pythonthreehome
 let &pythonthreedll=s:pythonthreedll
 endif
 
+" Winpty
+let s:winptydll = expand("$HOME/scoop/apps/winpty/current/x64/bin/winpty.dll")
+let &winptydll = s:winptydll
 
 " Custom Commands
 command! -nargs=0 ConfigInit :call ConfigInit()
