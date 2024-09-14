@@ -47,3 +47,5 @@ alias gcl="git clone"
 alias kb="kubectl"
 alias kbg="kubectl get"
 alias kba="kubectl apply"
+
+alias tf="terraform"

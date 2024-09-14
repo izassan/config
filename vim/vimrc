@@ -121,6 +121,8 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+Plug 'hashivim/vim-terraform' , { 'for': 'terraform'}
+
 if has('python3')
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'

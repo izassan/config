@@ -20,6 +20,7 @@ Set-Alias ? Where-Object
 Set-Alias sort Sort-Object
 Set-Alias cat Get-Content
 Set-Alias srl Set-RepositoryLocation
+Set-Alias tf terraform
 
 function ls(){ Get-ChildItem -Exclude _*,.* $Args }
 function lsn(){ Get-ChildItem -Name -Exclude _*,.* $Args }
