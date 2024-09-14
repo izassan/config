@@ -1,0 +1,4 @@
+.netrwhist
+plugged
+autoload/plug.vim
+colors/iceberg.vim
