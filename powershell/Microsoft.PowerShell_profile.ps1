@@ -39,6 +39,7 @@ function ga(){ git add $Args }
 function gap(){ git add -p $Args }
 function gc(){ git commit $Args }
 function gcm(){ git commit -m $Args }
+function gm(){ git merge $Args }
 function gd(){ git diff $Args }
 function gdc(){ git diff --cached $Args }
 function gs(){ git switch $Args }
