@@ -100,3 +100,19 @@ function Set-Proxy(){
     [System.Environment]::SetEnvironmentVariable("http_proxy", $proxyAddress, "User")
     [System.Environment]::SetEnvironmentVariable("https_proxy", $proxyAddress, "User")
 }
+
+function Copy-SshId(){
+    Param(
+        [Parameter(Mandatory)]$Destination,
+        $PublicKeyPath = "$HOME\.ssh\id_rsa.pub"
+    )
+    if(-Not(Test-Path $PublicKeyPath)){
+        Write-Error "$PublicKeyPath is not exist"
+        return
+    }
+    Get-Content $PublicKeyPath | ssh $Destination `
+    " `
+    mkdir -p ~/.ssh && chmod 700 ~/.ssh && `
+    cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys `
+    "
+}
