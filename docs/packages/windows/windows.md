@@ -20,3 +20,7 @@
 
 # music programming
 - reaper
+
+# kubernetes operator
+- kubectl
+- helm

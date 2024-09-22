@@ -21,6 +21,7 @@ Set-Alias sort Sort-Object
 Set-Alias cat Get-Content
 Set-Alias srl Set-RepositoryLocation
 Set-Alias tf terraform
+Set-Alias kb kubectl
 
 function ls(){ Get-ChildItem -Exclude _*,.* $Args }
 function lsn(){ Get-ChildItem -Name -Exclude _*,.* $Args }
@@ -33,6 +34,7 @@ function op(){ explorer.exe $Args }
 function opc(){ explorer.exe . $Args }
 function touch([Parameter(Mandatory)]$fp){ Out-File -InputObject "" -FilePath "$fp" }
 function v(){ vim . }
+function kbn(){ kubectl -n $USING_NAMESPACE $Args }
 
 function gst(){ git status $Args }
 function ga(){ git add $Args }
