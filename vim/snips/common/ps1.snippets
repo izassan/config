@@ -1,4 +1,4 @@
-snippet ? "Where-Object"
+snippet wo "Where-Object"
 Where-Object { $1 ${2:-eq} $3 }
 endsnippet
 
@@ -10,8 +10,14 @@ snippet ss "Select-Object"
 Select-Object -Property $1
 endsnippet
 
-snippet % "ForEach-Object"
+snippet fso "ForEach-Object"
 ForEach-Object { $1 }
+endsnippet
+
+snippet fsop "ForEach-Object -Parallel"
+ForEach-Object -Parallel {
+	$1
+} -ThrottleLimit ${2:100}
 endsnippet
 
 snippet echo "Write-Host"
