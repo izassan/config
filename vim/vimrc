@@ -1,5 +1,6 @@
 " Load Fucntions
 runtime! functions.vim
+runtime! command.vim
 
 
 " Color
