@@ -10,18 +10,26 @@ snippet ss "Select-Object"
 Select-Object -Property $1
 endsnippet
 
-snippet fso "ForEach-Object"
+snippet fo "ForEach-Object"
 ForEach-Object { $1 }
 endsnippet
 
-snippet fsop "ForEach-Object -Parallel"
+snippet fop "ForEach-Object -Parallel"
 ForEach-Object -Parallel {
 	$1
 } -ThrottleLimit ${2:100}
 endsnippet
 
-snippet echo "Write-Host"
+snippet eh "Write-Host"
 Write-Host "$1"
+endsnippet
+
+snippet ehe "Write-Error"
+Write-Error "$1"
+endsnippet
+
+snippet ehd "Write-Debug"
+Write-Debug "$1"
 endsnippet
 
 snippet func "standard function"
@@ -43,24 +51,7 @@ snippet mandatory "mandatory parameter"
 $2
 endsnippet
 
-snippet getreq "invoke request get method"
-\$${1:resp} = Invoke-WebRequest -Method Get -Uri $2 -SkipHttpErrorCheck$3
-endsnippet
-
-snippet postreq "invoke request post method"
-\$${1:resp} = Invoke-WebRequest -Method Post -Uri $2 -SkipHttpErrorCheck -Body $3
-endsnippet
-
-snippet putreq "invoke request put method"
-\$${1:resp} = Invoke-WebRequest -Method Put -Uri $2 -SkipHttpErrorCheck -Body $3
-endsnippet
-
-snippet deletereq "invoke request delete method"
-\$${1:resp} = Invoke-WebRequest -Method Delete -Uri $2 -SkipHttpErrorCheck$3
-endsnippet
-
-snippet checkreq "check request http statuscode"
-if(${1:\$resp.StatusCode} ${2:-eq} ${3:200}){
-    ${4:Write-Host "request failed"}
-}$5
+snippet valid "validateset"
+[ValidateSet($1)]\$$2
+$3
 endsnippet
