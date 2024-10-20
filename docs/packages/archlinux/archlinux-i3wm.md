@@ -1,3 +1,8 @@
+# desktop environment
+- xorg
+- lightdm
+- i3wm
+
 # text editor
 - gvim 
 
