@@ -24,6 +24,7 @@ Set-Alias srl Set-RepositoryLocation
 Set-Alias tf terraform
 Set-Alias kb kubectl
 Set-Alias py python
+Set-Alias watch Invoke-Watch
 
 function ls(){ Get-ChildItem -Exclude _*,.* $Args }
 function lsn(){ Get-ChildItem -Name -Exclude _*,.* $Args }

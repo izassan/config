@@ -116,3 +116,18 @@ function Copy-SshId(){
     cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys `
     "
 }
+
+function Invoke-Watch(){
+    Param(
+        [Parameter(Mandatory)][scriptblock]$ScriptBlock,
+        [int]$IntervalTime = 1,
+        [switch]$ClearConsole
+    )
+    while($true){
+        Invoke-Command $ScriptBlock
+        Start-Sleep -Seconds $IntervalTime
+        if($ClearConsole){
+            Clear-Host
+        }
+    }
+}
