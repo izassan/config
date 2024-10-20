@@ -8,6 +8,7 @@ Remove-Item -Force alias:*
 # Set aliaes
 Set-Alias clear Clear-Host
 Set-Alias echo Write-Host
+Set-Alias cat Get-Content
 Set-Alias cd Set-Location
 Set-Alias rm Remove-Item
 Set-Alias mv Move-Item
@@ -22,6 +23,7 @@ Set-Alias cat Get-Content
 Set-Alias srl Set-RepositoryLocation
 Set-Alias tf terraform
 Set-Alias kb kubectl
+Set-Alias py python
 
 function ls(){ Get-ChildItem -Exclude _*,.* $Args }
 function lsn(){ Get-ChildItem -Name -Exclude _*,.* $Args }
