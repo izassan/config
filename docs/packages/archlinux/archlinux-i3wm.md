@@ -1,6 +1,7 @@
 # desktop environment
 - xorg
 - lightdm
+- lightdm-gtk-greeter
 - i3wm
 
 # text editor
