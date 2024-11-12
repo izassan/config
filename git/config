@@ -7,10 +7,8 @@
     autocrlf = false
     excludesfile = ~/.config/git/ignore
 [commit]
-    template = ~/.config/git/commit_template
+    template = ~/.config/git/commit.template
 [ghq]
     root = ~/local/projects
-[ghq "https://izassan.net"]
-    vcs = git
 [include]
     path = ~/local_config/gitconfig

@@ -1,0 +1,12 @@
+prefix: subject
+
+Changes:
+
+Reason:
+
+# --- prefix ---
+# init: initilize repository
+# add: add files
+# update: update files
+# remove: remove files
+# fix: fix bug or solve problems
