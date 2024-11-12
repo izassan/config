@@ -7,3 +7,6 @@ function! CreateRepository(repo_name)
     call system("ghq create " . a:repo_name)
 endfunction
 command! -nargs=1 MkRepo call CreateRepository(<f-args>)
+
+command! -nargs=0 ConfigInit :call ConfigInit()
+command! -nargs=0 CopyFileContent :call CopyFileContent()
