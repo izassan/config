@@ -7,58 +7,50 @@ Remove-Item -Force alias:*
 
 # Set aliaes
 Set-Alias clear Clear-Host
+Set-Alias cls Clear-Host
+Set-Alias ls Get-ChildItem
+function  lsn { Get-ChildItem -Name $Args }
 Set-Alias echo Write-Host
 Set-Alias cat Get-Content
 Set-Alias cd Set-Location
-Set-Alias rm Remove-Item
 Set-Alias mv Move-Item
 Set-Alias cp Copy-Item
-Set-Alias cl Clear-Host
+function  mkdir { New-Item -ItemType Directory -Force -Path $Args }
 Set-Alias cfj ConvertFrom-Json
+function  ctj { $input | ForEach-Object { ConvertTo-Json -Depth 10 $_ } }
 Set-Alias tee Tee-Object
 Set-Alias % ForEach-Object
 Set-Alias ? Where-Object
 Set-Alias sort Sort-Object
 Set-Alias cat Get-Content
-Set-Alias srl Set-RepositoryLocation
+Set-Alias touch New-EmptyFile
+function  op { explorer.exe $Args }
+function  opc { explorer.exe . $Args }
+
 Set-Alias tf terraform
-Set-Alias kb kubectl
 Set-Alias py python
+Set-Alias kb kubectl
+function  kbn { kubectl -n $env:K8S_USING_NAMESPACE $Args }
+function  fv { vim (fzf) }
+
+function  gst(){ git status $Args }
+function  ga(){ git add $Args }
+function  gap(){ git add -p $Args }
+function  gc(){ git commit $Args }
+function  gcm(){ git commit -m $Args }
+function  gm(){ git merge $Args }
+function  gd(){ git diff $Args }
+function  gdc(){ git diff --cached $Args }
+function  gs(){ git switch $Args }
+function  gsc(){ git switch -c $Args }
+function  gb(){ git branch $Args }
+function  gba(){ git branch -a $Args }
+function  gbd(){ git branch -d $Args }
+function  gl(){ git log $Args }
+function  glo(){ git log --oneline $Args }
+
+Set-Alias srl Set-RepositoryLocation
 Set-Alias watch Invoke-Watch
-
-function ls(){ Get-ChildItem -Exclude _*,.* $Args }
-function lsn(){ Get-ChildItem -Name -Exclude _*,.* $Args }
-function lsf(){ Get-ChildItem -Name -Force $Args }
-function rmrf(){ Remove-Item -Recurse -Force $Args }
-function cpr(){ Copy-Item -Recurse $Args }
-function mkdir(){ New-Item -ItemType Directory -Force -Path $Args }
-function ctj([Parameter(Mandatory,ValueFromPipeLine)]$inputObject, $depth = 10){ ConvertTo-Json -Depth $depth -InputObject $inputObject }
-function op(){ explorer.exe $Args }
-function opc(){ explorer.exe . $Args }
-function touch([Parameter(Mandatory)]$fp){ Out-File -InputObject "" -FilePath "$fp" }
-function v(){ vim . }
-function kbn(){ kubectl -n $USING_NAMESPACE $Args }
-
-function gst(){ git status $Args }
-function ga(){ git add $Args }
-function gap(){ git add -p $Args }
-function gc(){ git commit $Args }
-function gcm(){ git commit -m $Args }
-function gm(){ git merge $Args }
-function gd(){ git diff $Args }
-function gdc(){ git diff --cached $Args }
-function gs(){ git switch $Args }
-function gsc(){ git switch -c $Args }
-function gb(){ git branch $Args }
-function gba(){ git branch -a $Args }
-function gbd(){ git branch -d $Args }
-function gl(){ git log $Args }
-function glo(){ git log --oneline $Args }
-
-function mp(){ multipass $Args }
-function mpl(){ multipass launch --name devvm --cpus 4 --memory 8G --disk 40G lts }
-function mps(){ multipass shell devvm }
-function mpt(){ multipass exec -- devvm tmux }
 
 # Set environment variables
 $env:GIT_EDITOR=(Get-Command vim).Source -replace "\\","/"

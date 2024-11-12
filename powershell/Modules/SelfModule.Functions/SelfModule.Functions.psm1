@@ -131,3 +131,12 @@ function Invoke-Watch(){
         }
     }
 }
+
+function New-EmptyFile(){
+    Param(
+        [Parameter(Mandatory)][String[]]$FilePaths
+    )
+    foreach($f in $FilePaths){
+        Out-File -InputObject "" -FilePath $f
+    }
+}
