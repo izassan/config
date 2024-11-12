@@ -63,7 +63,10 @@ function mpt(){ multipass exec -- devvm tmux }
 # Set environment variables
 $env:GOPATH = "$HOME\local\opt\go"
 $env:PYTHONUSERBASE = "$HOME\local\pip"
-$env:PATH = "$env:PATH;$env:GOPATH\bin;$env:PYTHONUSERBASE\$USEPYTHONVERSION\Scripts"
+$PYTHON_VERSION = (python --version).split(" ")[1].split(".")
+$PYTHON_BIN_DIR = "$env:PYTHONUSERBASE\Python{0}{1}\Scripts" `
+                        -f $PYTHON_VERSION[0],$PYTHON_VERSION[1]
+$env:PATH = "$env:PATH;$env:GOPATH\bin;$PYTHON_BIN_DIR"
 
 # Add vi keybinding mode
 Set-PSReadLineOption -EditMode Vi
