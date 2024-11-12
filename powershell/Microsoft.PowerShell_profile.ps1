@@ -61,6 +61,7 @@ function mps(){ multipass shell devvm }
 function mpt(){ multipass exec -- devvm tmux }
 
 # Set environment variables
+$env:GIT_EDITOR=(Get-Command vim).Source -replace "\\","/"
 $env:GOPATH = "$HOME\local\opt\go"
 $env:PYTHONUSERBASE = "$HOME\local\pip"
 $PYTHON_VERSION = (python --version).split(" ")[1].split(".")
