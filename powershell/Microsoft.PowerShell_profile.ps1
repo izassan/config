@@ -15,6 +15,8 @@ Set-Alias cat Get-Content
 Set-Alias cd Set-Location
 Set-Alias mv Move-Item
 Set-Alias cp Copy-Item
+Set-Alias rm New-TrashItem
+Set-Alias clstrash Clear-TrashDir
 function  mkdir { New-Item -ItemType Directory -Force -Path $Args }
 Set-Alias cfj ConvertFrom-Json
 function  ctj { $input | ForEach-Object { ConvertTo-Json -Depth 10 $_ } }
