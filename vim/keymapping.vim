@@ -14,6 +14,9 @@ nnoremap <C-c> :CopyFileContent<CR>
 let g:use_shell = has("win32") ? "pwsh" : "zsh"
 nnoremap <Space>t :execute("terminal ++close " . g:use_shell)<CR>
 nnoremap <Space>T :execute("terminal ++curwin ++close " . g:use_shell)<CR>
+nnoremap <Space>r :source %<CR>
+nnoremap <Space>mc :CreateMemo<CR>
+nnoremap <Space>mo :OpenMemo<CR>
 
 
 " Plugin manage
