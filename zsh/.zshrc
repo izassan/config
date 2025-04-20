@@ -1,6 +1,6 @@
-source ~/.zsh/functions.zsh
-source ~/.zsh/prompt.zsh
-source ~/.zsh/aliases.zsh
+source $XDG_CONFIG_HOME/zsh/functions.zsh
+source $XDG_CONFIG_HOME/zsh/prompt.zsh
+source $XDG_CONFIG_HOME/zsh/aliases.zsh
 
 if [ -d $ZPLUG_HOME ];then
     source $ZPLUG_HOME/init.zsh
@@ -31,7 +31,7 @@ setopt correct
 setopt prompt_subst
 
 function set_prompt(){
-    PROMPT="`set_left_prompt`"
+    PROMPT="%n %d > "
     RPROMPT="`set_right_prompt`"
 }
 add-zsh-hook precmd set_prompt

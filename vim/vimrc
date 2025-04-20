@@ -68,23 +68,13 @@ if has("gui_running")
 endif
 
 
-if has("win32")
-    " Python3
-    let s:pythonthreehome = expand("$HOME/scoop/apps/python/current")
-    let s:pythonthreedll = expand(" $HOME/scoop/apps/python/current/python3.dll")
-    let &pythonthreehome=s:pythonthreehome
-    let &pythonthreedll=s:pythonthreedll
-    " Winpty
-    let s:winptydll = expand("$HOME/scoop/apps/winpty/current/x64/bin/winpty.dll")
-    let &winptydll = s:winptydll
-endif
-
-
+" Load After Configuration
 runtime! plugin.vim
 runtime! keymapping.vim
 
 
 " Load Local Configuration
-if filereadable(expand("$HOME/local_config/vim/vimrc"))
-    source $HOME/local_config/vim/vimrc
+let $LOCAL_VIMRC = expand(GetVimConfigDir() . "/vimrc_local")
+if filereadable($LOCAL_VIMRC)
+    source $LOCAL_VIMRC
 endif

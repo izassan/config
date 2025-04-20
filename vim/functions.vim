@@ -29,7 +29,7 @@ function! GetVimConfigDir()
     if has("win32")
         return expand("$HOME/vimfiles") 
     else
-        return expand("$HOME/.vim")        
+        return expand("$XDG_CONFIG_HOME/vim")        
     endif
 endfunction
 

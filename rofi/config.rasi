@@ -1,9 +1,0 @@
-configuration {
-    modi: "drun,window,system:~/.config/rofi/rofi_system.sh";
-    sidebar-mode: true;
-    hide-scrollbar: true;
-    kb-cancel: "Escape,Control+bracketleft";
-    kb-mode-previous: "Alt+u";
-    kb-mode-next: "Alt+n";
-}
-@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"

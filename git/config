@@ -3,12 +3,8 @@
 [init]
 	defaultBranch = main
 [core]
-    editor = vim
     autocrlf = false
-    excludesfile = ~/.config/git/ignore
-[commit]
-    template = ~/.config/git/commit.template
-[ghq]
-    root = ~/local/projects
-[include]
-    path = ~/local_config/gitconfig
+[includeIf "gitdir:/home/**"]
+    path = ~/.config/git/config_unix
+[includeIf "gitdir:/C/Users/**"]
+    path = ~/.config/git/config_windows

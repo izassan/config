@@ -55,13 +55,8 @@ Set-Alias srl Set-RepositoryLocation
 Set-Alias watch Invoke-Watch
 
 # Set environment variables
-$env:GIT_EDITOR=(Get-Command vim).Source -replace "\\","/"
-$env:GOPATH = "$HOME\local\opt\go"
-$env:PYTHONUSERBASE = "$HOME\local\pip"
-$PYTHON_VERSION = (python --version).split(" ")[1].split(".")
-$PYTHON_BIN_DIR = "$env:PYTHONUSERBASE\Python{0}{1}\Scripts" `
-                        -f $PYTHON_VERSION[0],$PYTHON_VERSION[1]
-$env:PATH = "$env:PATH;$env:GOPATH\bin;$PYTHON_BIN_DIR"
+$env:GIT_CONFIG= "$HOME\Config\git\config"
+$env:PATH = "$env:PATH"
 
 # Add vi keybinding mode
 Set-PSReadLineOption -EditMode Vi
@@ -79,7 +74,7 @@ function prompt {
 Set-PSReadlineOption -BellStyle None
 
 # Load local config
-$localConfigPath = "$HOME\local_config\powershell.ps1"
+$localConfigPath = "$PSScriptRoot\profile_local.ps1"
 if(Test-Path $localConfigPath){
     . $localConfigPath
 }
