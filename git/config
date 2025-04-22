@@ -4,7 +4,8 @@
 	defaultBranch = main
 [core]
     autocrlf = false
-[includeIf "gitdir:/home/**"]
-    path = ~/.config/git/config_unix
-[includeIf "gitdir:C:/Users/**"]
-    path = ~/Config/git/config_windows
+    excludesfile = ~/.config/git/ignore
+[commit]
+    template = ~/.config/git/commit.template
+[include]
+    path = ~/.config/git/config_local

@@ -1,8 +1,0 @@
-# vim: set ft=gitconfig :
-
-[core]
-    excludesfile = ~/.config/git/ignore
-[commit]
-    template = ~/.config/git/commit.template
-[include]
-    path = ~/.config/git/config_local

@@ -1,6 +1,7 @@
 $links = @(
     @{ "src" = "$PWD\powershell"; "dest" = "$HOME\Documents\Powershell" },
     @{ "src" = "$PWD\vim"; "dest" = "$HOME\vimfiles" }
+    @{ "src" = "$PWD\git"; "dest" = "$HOME\.config\git" }
 )
 
 $links | ForEach-Object {

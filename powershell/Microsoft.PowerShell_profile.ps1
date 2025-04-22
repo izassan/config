@@ -1,11 +1,17 @@
 # Import-Modules
 Import-Module PSReadline
-Import-Module "${PSScriptRoot}\Modules\SelfModule.Functions"
 
 
 # Set environment variables
-$env:GIT_CONFIG_GLOBAL= "$HOME\Config\git\config"
-$env:GOPATH = "$HOME\go"
+$env:XDG_CONFIG_HOME  = "$HOME\.config"
+$env:XDG_CACHE_HOME   = "$HOME\.local\cache"
+$env:XDG_DATA_HOME    = "$HOME\.local\share"
+$env:XDG_STATE_HOME   = "$HOME\.local\state"
+
+$env:GOPATH = "$env:XDG_DATA_HOME\go"
+$env:SCOOP = "$env:XDG_DATA_HOME\scoop"
+
+$env:GIT_CONFIG_GLOBAL= "$env:XDG_CONFIG_HOME\git\config"
 $env:PATH = "$env:PATH;$env:GOPATH\bin"
 
 
@@ -13,6 +19,10 @@ $env:PATH = "$env:PATH;$env:GOPATH\bin"
 Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineOption -HistoryNoDuplicates
 Set-PSReadlineOption -BellStyle None
+
+
+# Define Functions
+. $PSScriptRoot\functions.ps1
 
 
 # Configure Prompt
