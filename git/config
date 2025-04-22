@@ -6,5 +6,5 @@
     autocrlf = false
 [includeIf "gitdir:/home/**"]
     path = ~/.config/git/config_unix
-[includeIf "gitdir:/C/Users/**"]
-    path = ~/.config/git/config_windows
+[includeIf "gitdir:C:/Users/**"]
+    path = ~/Config/git/config_windows
