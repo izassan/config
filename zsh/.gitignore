@@ -1,3 +1,4 @@
-.zcompdump
 .zplug
+.zcompdump
+.zsh_history
 zshrc_local
