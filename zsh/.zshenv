@@ -17,4 +17,4 @@ export ZPLUG_HOME=$XDG_CONFIG_HOME/zsh/.zplug
 export ZSH_LOCAL_CONFIG=$XDG_CONFIG_HOME/zsh/zshrc_local
 
 export GOPATH="$XDG_DATA_HOME/go"
-export PATH="$PATH:$GOPATH/bin:/opt/vim/bin"
+export PATH="$PATH:$GOPATH/bin:$HOME/.local/bin"
