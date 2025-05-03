@@ -1,0 +1,40 @@
+add_newline = false
+continuation_prompt = "[>>> ](fg:white)"
+format = "$username$hostname $all"
+
+[hostname]
+ssh_only = false
+style = "fg:green bold"
+format = "[ on $ssh_symbol$hostname]($style)"
+
+[username]
+show_always = true
+style_user = "fg:green bold"
+style_root = "fg:red bold"
+format ="[$user]($style)"
+
+[directory]
+style = "fg:green bold"
+format = ": [$path]($style)[$read_only]($read_only_style) "
+truncation_length = 3
+truncation_symbol = "..."
+truncate_to_repo = false
+
+
+[character]
+success_symbol = "[>>](fg:white)"
+error_symbol = "[>>](fg:red)"
+
+[git_branch]
+style = "fg:blue"
+format = " [$symbol$branch(:$remote_branch)]($style) "
+
+[git_status]
+style = "fg:red"
+modified = "M"
+staged = "S"
+renamed = "R"
+deleted = "D"
+
+[cmd_duration]
+disabled = true

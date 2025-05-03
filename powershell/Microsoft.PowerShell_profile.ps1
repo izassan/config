@@ -27,12 +27,17 @@ Set-PSReadlineOption -BellStyle None
 
 
 # Configure Prompt
-. $PSScriptRoot\prompt.ps1
+if(Get-Command starship -ea SilentlyContinue){
+    Invoke-Expression (&starship init powershell)
+}else{
+    . $PSScriptRoot\prompt.ps1
+}
 
 
 # Configure Alias
-. $PSScriptRoot\aliases.ps1
-
+if(Get-Command maskcmd -ea SilentlyContinue){
+    Invoke-Expression (&maskcmd generate powershell)
+}
 
 # Load local config
 $localConfigPath = "$PSScriptRoot\profile_local.ps1"

@@ -1,6 +1,4 @@
 source $XDG_CONFIG_HOME/zsh/functions.zsh
-source $XDG_CONFIG_HOME/zsh/prompt.zsh
-source $XDG_CONFIG_HOME/zsh/aliases.zsh
 
 if [ -d $ZPLUG_HOME ];then
     source $ZPLUG_HOME/init.zsh
@@ -33,11 +31,11 @@ setopt hist_ignore_all_dups
 setopt inc_append_history
 setopt extended_history
 
-function set_prompt(){
-    PROMPT="%n %d > "
-    RPROMPT="`set_right_prompt`"
-}
-add-zsh-hook precmd set_prompt
+# configuration prompt with startship
+type starship > /dev/null && eval "$(starship init zsh)"
+
+# configuration alias with maskcmd
+type maskcmd > /dev/null && eval "$(maskcmd generate zsh)"
 
 if [ -r $ZSH_LOCAL_CONFIG ];then
     source $ZSH_LOCAL_CONFIG

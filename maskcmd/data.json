@@ -1,0 +1,194 @@
+{
+    "alias_definitions": [
+        {
+            "command": "git status",
+            "aliases": [
+                "gst"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git log",
+            "aliases": [
+                "gl"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git add",
+            "aliases": [
+                "ga"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git commit",
+            "aliases": [
+                "gc"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git commit --amend",
+            "aliases": [
+                "gca"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git reset",
+            "aliases": [
+                "gr"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git diff",
+            "aliases": [
+                "gd"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git diff --cached",
+            "aliases": [
+                "gdc"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git switch",
+            "aliases": [
+                "gs"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git switch -c",
+            "aliases": [
+                "gsc"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git branch",
+            "aliases": [
+                "gb"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git merge",
+            "aliases": [
+                "gm"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "git pull",
+            "aliases": [
+                "gp"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "ls --color=auto",
+            "aliases": [
+                "l",
+                "ls"
+            ],
+            "shell": "sh"
+        },
+        {
+            "command": "ls -a --color=auto",
+            "aliases": [
+                "la"
+            ],
+            "shell": "sh"
+        },
+        {
+            "command": "ls -al --color=auto",
+            "aliases": [
+                "ll"
+            ],
+            "shell": "sh"
+        },
+        {
+            "command": "clear",
+            "aliases": [
+                "cl"
+            ],
+            "shell": "sh"
+        },
+        {
+            "command": "cp -i",
+            "aliases": [
+                "cp"
+            ],
+            "shell": "sh"
+        },
+        {
+            "command": "mv -i",
+            "aliases": [
+                "mv"
+            ],
+            "shell": "sh"
+        },
+        {
+            "command": "rm -i",
+            "aliases": [
+                "rm"
+            ],
+            "shell": "sh"
+        },
+        {
+            "command": "cd-gitroot",
+            "aliases": [
+                "cdg"
+            ],
+            "shell": "zsh"
+        },
+        {
+            "command": "Clear-Host",
+            "aliases": [
+                "cl"
+            ],
+            "shell": "pwsh"
+        },
+        {
+            "command": "ConvertFrom-Json",
+            "aliases": [
+                "cfj"
+            ],
+            "shell": "pwsh"
+        },
+        {
+            "command": "ConvertTo-Json",
+            "aliases": [
+                "ctj"
+            ],
+            "shell": "pwsh"
+        },
+        {
+            "command": "New-EmptyFile",
+            "aliases": [
+                "touch"
+            ],
+            "shell": "pwsh"
+        },
+        {
+            "command": "Set-RepositoryLocation",
+            "aliases": [
+                "srl"
+            ],
+            "shell": "pwsh"
+        },
+        {
+            "command": "Invoke-Watch",
+            "aliases": [
+                "watch"
+            ],
+            "shell": "pwsh"
+        }
+    ]
+}
