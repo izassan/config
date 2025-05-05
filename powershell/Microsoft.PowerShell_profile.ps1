@@ -36,7 +36,7 @@ if(Get-Command starship -ea SilentlyContinue){
 
 # Configure Alias
 if(Get-Command maskcmd -ea SilentlyContinue){
-    Invoke-Expression (&maskcmd generate powershell)
+    Invoke-Expression (&maskcmd generate powershell --init)
 }
 
 # Load local config
