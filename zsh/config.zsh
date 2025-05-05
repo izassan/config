@@ -35,7 +35,7 @@ setopt extended_history
 type starship > /dev/null && eval "$(starship init zsh)"
 
 # configuration alias with maskcmd
-type maskcmd > /dev/null && eval "$(maskcmd generate zsh)"
+type maskcmd > /dev/null && eval "$(maskcmd generate zsh --init)"
 
 if [ -r $ZSH_LOCAL_CONFIG ];then
     source $ZSH_LOCAL_CONFIG
