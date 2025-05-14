@@ -189,6 +189,34 @@
                 "watch"
             ],
             "shell": "pwsh"
+        },
+        {
+            "command": "maskcmd",
+            "aliases": [
+                "mc"
+            ],
+            "shell": "all"
+        },
+        {
+            "command": "explorer.exe .",
+            "aliases": [
+                "oc"
+            ],
+            "shell": "pwsh"
+        },
+        {
+            "command": "query user",
+            "aliases": [
+                "qu"
+            ],
+            "shell": "pwsh"
+        },
+        {
+            "command": "git branch -a",
+            "aliases": [
+                "gba"
+            ],
+            "shell": "all"
         }
     ]
 }

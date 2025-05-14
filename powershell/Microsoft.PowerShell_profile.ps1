@@ -23,7 +23,6 @@ Set-PSReadlineOption -BellStyle None
 
 # Define Functions
 . $PSScriptRoot\functions.ps1
-. $PSScriptRoot\functions_for_alias.ps1
 
 
 # Configure Prompt
