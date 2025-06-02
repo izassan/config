@@ -1,0 +1,50 @@
+snippet terraform_aws "terraform block for aws"
+terraform {
+	required_version = "${1:>=1.1}"
+	required_providers {
+		aws = {
+			source  = "hashicorp/aws"
+			version = "${4:~>3.0}"
+		}
+	}
+}
+endsnippet
+
+snippet terraform_backend_s3 "terraform backend block for s3"
+backend "s3" {
+	bucket  = "${1:manage-bucket-sample}"
+	key     = "${2:terraform.tfstate}"
+	region  = "${3:ap-northeast-1}"
+	profile = "${4:terraform}"
+}
+endsnippet
+
+snippet provider_aws
+provider "aws" {
+	profile    = "${1:terraform}"
+	region     = var.region
+	access_key = var.access_key
+	secret_key = var.secret_key
+}
+endsnippet
+
+snippet variable "variable block"
+variable "$1" {
+	type = "${2:string}"
+	default = "${3:default-variable}"
+	description = "${4:description}"
+}
+endsnippet
+
+snippet resource "resource block"
+resource "$1" {
+	$2
+}
+endsnippet
+
+snippet module "module block"
+module "$1" {
+	source = "$2"
+	$3
+}
+endsnippet

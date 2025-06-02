@@ -1,8 +1,8 @@
-snippet whereobj "Where-Object"
+snippet wobj "Where-Object"
 Where-Object { $1 ${2:-eq} $3 }
 endsnippet
 
-snippet sortobj "Sort-Object"
+snippet sobj "Sort-Object"
 Sort-Object
 endsnippet
 
@@ -14,7 +14,7 @@ snippet forobj "ForEach-Object"
 ForEach-Object { $1 }
 endsnippet
 
-snippet forobjpara "ForEach-Object -Parallel"
+snippet forobjp "ForEach-Object -Parallel"
 ForEach-Object -Parallel {
 	$1
 } -ThrottleLimit ${2:100}
@@ -24,11 +24,11 @@ snippet echo "Write-Host"
 Write-Host "$1"
 endsnippet
 
-snippet echoerr "Write-Error"
+snippet echoe "Write-Error"
 Write-Error "$1"
 endsnippet
 
-snippet echodebug "Write-Debug"
+snippet echod "Write-Debug"
 Write-Debug "$1"
 endsnippet
 
@@ -50,4 +50,22 @@ endsnippet
 
 snippet validateset "validateset"
 [ValidateSet($1)]$2
+endsnippet
+
+snippet opxlsx "open excel"
+$excel = New-Object -ComObject Excel.Application
+$excel.Visible = $false
+
+$workbook = $excel.Workbooks.Open((Convert-Path ${1:path.xlsx}))
+endsnippet
+
+snippet clxlsx "close excel"
+# 保存して終了する
+${1:workbook}.Close($false)
+${2:excel}.Quit()
+
+# COMオブジェクトの解放
+[System.Runtime.Interopservices.Marshal]::ReleaseComObject($1) | Out-Null
+[System.Runtime.Interopservices.Marshal]::ReleaseComObject($2) | Out-Null
+[GC]::Collect()
 endsnippet
