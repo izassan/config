@@ -217,6 +217,13 @@
                 "gba"
             ],
             "shell": "all"
+        },
+        {
+            "command": "gsudo",
+            "aliases": [
+                "sudo"
+            ],
+            "shell": "pwsh"
         }
     ]
 }
