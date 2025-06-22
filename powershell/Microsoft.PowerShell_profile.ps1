@@ -10,8 +10,11 @@ $env:XDG_STATE_HOME   = "$HOME\.local\state"
 
 $env:GOPATH = "$env:XDG_DATA_HOME\go"
 $env:SCOOP = "$env:XDG_DATA_HOME\scoop"
+$env:STARSHIP_CACHE = "$env:XDG_CACHE_HOME\starship"
+$env:KUBECACHEDIR = "$env:XDG_CACHE_HOME\kubectl"
 
-$env:GIT_CONFIG_GLOBAL= "$env:XDG_CONFIG_HOME\git\config"
+$env:GIT_CONFIG_GLOBAL = "$env:XDG_CONFIG_HOME\git\config"
+$env:KUBECONFIG = "$env:XDG_CONFIG_HOME\kubeconfig"
 $env:PATH = "$env:PATH;$env:GOPATH\bin"
 
 
@@ -35,7 +38,9 @@ if(Get-Command starship -ea SilentlyContinue){
 
 # Configure Alias
 if(Get-Command maskcmd -ea SilentlyContinue){
-    Invoke-Expression (&maskcmd generate powershell --init)
+    if($PSVersionTable.PSVersion.Major -eq 7){
+        Invoke-Expression (&maskcmd generate powershell --init)
+    }
 }
 
 # Load local config

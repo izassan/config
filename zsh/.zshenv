@@ -16,5 +16,9 @@ export HISTFILE=$XDG_CONFIG_HOME/zsh/.zsh_history
 export ZPLUG_HOME=$XDG_CONFIG_HOME/zsh/.zplug
 export ZSH_LOCAL_CONFIG=$XDG_CONFIG_HOME/zsh/zshrc_local
 
+export STARSHIP_CACHE=$XDG_CACHE_HOME/starship
+export KUBECACHEDIR="$XDG_CACHE_HOME/kubectl"
+
+export KUBECONFIG="$XDG_CONFIG_HOME/kubeconfig"
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$PATH:$GOPATH/bin:$HOME/.local/bin"
