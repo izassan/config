@@ -59,6 +59,12 @@ set showcmd
 set display=lastline
 
 
+" Terminal
+if has("win32")
+    set termwintype=winpty
+endif
+
+
 " GVim configuration
 if has("gui_running")
     set guioptions-=T
