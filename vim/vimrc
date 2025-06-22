@@ -48,6 +48,7 @@ set hlsearch
 set nowritebackup
 set nobackup
 set noswapfile
+set viminfo=
 
 
 " Display
