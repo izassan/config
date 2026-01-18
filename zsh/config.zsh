@@ -1,16 +1,7 @@
+[ -r ~/.config/zsh/zshrc_local_before.zsh ] && source ~/.config/zsh/zshrc_local_before.zsh
+
 source $XDG_CONFIG_HOME/zsh/functions.zsh
-
-if [ -d $ZPLUG_HOME ];then
-    source $ZPLUG_HOME/init.zsh
-
-    # plugins
-    zplug "zsh-users/zsh-syntax-highlighting", defer:2
-    zplug "zsh-users/zsh-autosuggestions"
-    zplug "mollifier/cd-gitroot"
-
-    # Then, source plugins and add commands to $PATH
-    zplug load
-fi
+source $XDG_CONFIG_HOME/zsh/zplug.zsh
 
 bindkey -v
 
@@ -37,6 +28,9 @@ type starship > /dev/null && eval "$(starship init zsh)"
 # configuration alias with maskcmd
 type maskcmd > /dev/null && eval "$(maskcmd generate zsh --init)"
 
-if [ -r $ZSH_LOCAL_CONFIG ];then
-    source $ZSH_LOCAL_CONFIG
-fi
+# configuration environment variable
+export EDITOR=vim
+export GOPATH=~/.go
+export PATH=$GOPATH/bin:$PATH
+
+[ -r ~/.config/zsh/zshrc_local_after.zsh ] && source ~/.config/zsh/zshrc_local_after.zsh
