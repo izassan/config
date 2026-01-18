@@ -1,0 +1,122 @@
+{
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2026-01-18T21:31:46+09:00",
+            "Manifests": 1419
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2026-01-18T21:32:40+09:00",
+            "Manifests": 2256
+        },
+        {
+            "Name": "izassan-custom-vim",
+            "Source": "https://github.com/izassan/scoop-bucket",
+            "Updated": "2025-06-22T15:40:16+09:00",
+            "Manifests": 2
+        }
+    ],
+    "apps": [
+        {
+            "Updated": "2025-10-04T02:42:00.0640917+09:00",
+            "Source": "main",
+            "Name": "7zip",
+            "Version": "25.01",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-05-14T23:47:10.4046247+09:00",
+            "Source": "main",
+            "Name": "7zip19.00-helper",
+            "Version": "19.00",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-14T20:09:15.9999236+09:00",
+            "Source": "main",
+            "Name": "aws",
+            "Version": "2.32.34",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-04-22T22:58:09.3824905+09:00",
+            "Source": "main",
+            "Name": "dark",
+            "Version": "3.14.1",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-14T20:10:51.6063669+09:00",
+            "Source": "extras",
+            "Name": "gcloud",
+            "Version": "552.0.0",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-12T21:41:41.0159501+09:00",
+            "Source": "main",
+            "Name": "git",
+            "Version": "2.52.0",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-12T21:43:17.242187+09:00",
+            "Source": "main",
+            "Name": "go",
+            "Version": "1.25.5",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-12T21:43:19.0696208+09:00",
+            "Source": "main",
+            "Name": "gsudo",
+            "Version": "2.6.1",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-13T21:47:48.0305662+09:00",
+            "Source": "main",
+            "Name": "pwsh",
+            "Version": "7.5.4",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-12T21:45:48.6100263+09:00",
+            "Source": "main",
+            "Name": "python",
+            "Version": "3.14.2",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-12T21:45:50.9740769+09:00",
+            "Source": "main",
+            "Name": "starship",
+            "Version": "1.24.2",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-04-22T23:00:14.3525001+09:00",
+            "Source": "izassan-custom-vim",
+            "Name": "vim-izassan-custom",
+            "Version": "91-r2",
+            "Info": ""
+        },
+        {
+            "Updated": "2026-01-12T21:53:16.7102133+09:00",
+            "Source": "extras",
+            "Name": "windows-terminal",
+            "Version": "1.23.13503.0",
+            "Info": ""
+        },
+        {
+            "Updated": "2025-06-22T15:42:15.1683222+09:00",
+            "Source": "izassan-custom-vim",
+            "Name": "winpty-all",
+            "Version": "0.4.3",
+            "Info": ""
+        }
+    ]
+}
