@@ -1,5 +1,15 @@
 " Plugin manage
-if !IsReadableVimPlugPath()
+function! GetVimPlugPath()
+    return expand(GetVimConfigDir() . "/autoload/plug.vim")
+endfunction
+
+if !filereadable(GetVimPlugPath())
+    let s:curl = has("win32") ? "curl.exe" : "curl"
+    let s:vimplug_url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    let s:install_vimplug_command = printf("%s -flo %s --create-dirs %s", s:curl, GetVimPlugPath(), s:vimplug_url)
+    let s:resp = system(s:install_vimplug_command)
+endif
+if !filereadable(GetVimPlugPath())
     finish
 endif
 

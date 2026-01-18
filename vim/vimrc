@@ -1,16 +1,12 @@
-" Load Fucntions
+" Load Before Configuration
 runtime! functions.vim
 runtime! command.vim
 runtime! filetype.vim
-
-
-" Color
-set t_Co=256
-set background=dark
-if filereadable(GetIcebergPath())
-    colorscheme iceberg
+runtime! colorscheme.vim
+let $LOCAL_VIMRC_BEFORE = expand(GetVimConfigDir() . "/vimrc_local_before")
+if filereadable($LOCAL_VIMRC_BEFORE)
+    source $LOCAL_VIMRC_BEFORE
 endif
-
 
 " General
 set number
@@ -81,7 +77,7 @@ runtime! keymapping.vim
 
 
 " Load Local Configuration
-let $LOCAL_VIMRC = expand(GetVimConfigDir() . "/vimrc_local")
-if filereadable($LOCAL_VIMRC)
-    source $LOCAL_VIMRC
+let $LOCAL_VIMRC_AFTER = expand(GetVimConfigDir() . "/vimrc_local_after")
+if filereadable($LOCAL_VIMRC_AFTER)
+    source $LOCAL_VIMRC_AFTER
 endif

@@ -20,7 +20,7 @@ nnoremap <Space>mo :OpenMemo<CR>
 
 
 " Plugin manage
-if !IsReadableVimPlugPath()
+if !filereadable(expand(GetVimConfigDir() . "/autoload/plug.vim"))
     finish
 endif
 
