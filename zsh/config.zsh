@@ -28,9 +28,4 @@ type starship > /dev/null && eval "$(starship init zsh)"
 # configuration alias with maskcmd
 type maskcmd > /dev/null && eval "$(maskcmd generate zsh --init)"
 
-# configuration environment variable
-export EDITOR=vim
-export GOPATH=~/.go
-export PATH=$GOPATH/bin:$PATH
-
 [ -r ~/.config/zsh/zshrc_local_after.zsh ] && source ~/.config/zsh/zshrc_local_after.zsh
