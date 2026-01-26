@@ -7,6 +7,8 @@ mkdir -p $XDG_CONFIG_HOME
 ln -sfnv $(realpath $PWD/../../git) $XDG_CONFIG_HOME/git
 ln -sfnv $(realpath $PWD/../../vim) $XDG_CONFIG_HOME/vim
 ln -sfnv $(realpath $PWD/../../zsh) $XDG_CONFIG_HOME/zsh
+ln -sfnv $(realpath $PWD/../../alacritty) $XDG_CONFIG_HOME/alacritty
+ln -sfnv $(realpath $PWD/../../i3) $XDG_CONFIG_HOME/i3
 ln -sfnv $(realpath $PWD/../../zsh/.zshenv) $HOME/.zshenv
 ln -sfnv $(realpath $PWD/../../maskcmd) $XDG_CONFIG_HOME/maskcmd
 ln -sfnv $(realpath $PWD/../../starship/starship.toml) $XDG_CONFIG_HOME/starship.toml
