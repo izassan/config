@@ -6,5 +6,5 @@ yay -S --needed --noconfirm \
   gvim alacritty zsh tmux starship \
   google-chrome reaper \
   tailscale \
-  i3-wm \
+  i3 rofi \
   go python 
