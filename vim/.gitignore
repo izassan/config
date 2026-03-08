@@ -2,4 +2,4 @@
 plugged
 autoload/plug.vim
 colors/iceberg.vim
-vimrc_local
+vimrc_local*

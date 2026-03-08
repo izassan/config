@@ -1,11 +1,3 @@
-function Set-RepositoryLocation(){
-    $destPath = (ghq list -p | fzf )
-    if(($null -eq $destPath) -Or ("" -eq $destPath)){
-        return
-    }
-    Set-Location $destPath
-}
-
 function Invoke-Watch(){
     Param(
         [Parameter(Mandatory)][scriptblock]$ExecuteScript,

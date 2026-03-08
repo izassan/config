@@ -1,12 +1,14 @@
-" Load Before Configuration
-runtime! functions.vim
-runtime! command.vim
-runtime! filetype.vim
-runtime! colorscheme.vim
-let $LOCAL_VIMRC_BEFORE = expand(GetVimConfigDir() . "/vimrc_local_before")
-if filereadable($LOCAL_VIMRC_BEFORE)
-    source $LOCAL_VIMRC_BEFORE
+" Define Vim Confiugration Directory
+let g:vim_config_dir = 
+            \ has("win32") ? expand("$HOME/vimfiles") : expand("$XDG_CONFIG_HOME/vim")        
+
+
+" Load Local Before Configuration
+let s:local_vimrc_before = expand(g:vim_config_dir . "/vimrc_local_before")
+if filereadable(s:local_vimrc_before)
+    execute printf("%s %s", "source", s:local_vimrc_before)
 endif
+
 
 " General
 set number
@@ -21,6 +23,11 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set backspace=indent,eol,start
 set modeline
+if has('win32')
+    set shell=pwsh
+else
+    set shell=zsh
+endif
 
 
 " Indent
@@ -56,13 +63,7 @@ set showcmd
 set display=lastline
 
 
-" Terminal
-if has("win32")
-    set termwintype=winpty
-endif
-
-
-" GVim configuration
+" GVim
 if has("gui_running")
     set guioptions-=T
     set guioptions-=m
@@ -71,13 +72,60 @@ if has("gui_running")
 endif
 
 
-" Load After Configuration
-runtime! plugin.vim
+" Plugin Manager Bootstrap
+let s:vimplug_path = expand(g:vim_config_dir . "/autoload/plug.vim")
+
+if !filereadable(s:vimplug_path)
+    let s:curl = has("win32") ? "curl.exe" : "curl"
+    let s:vimplug_url = "https://raw.githubusercontent.com" . 
+                \ "/junegunn/vim-plug/master/plug.vim"
+    let s:install_vimplug_command = 
+                \ printf("%s -flo %s --create-dirs %s", s:curl, s:vimplug_path, s:vimplug_url)
+    let s:resp = system(s:install_vimplug_command)
+endif
+
+" Plugin List
+call plug#begin()
+Plug 'itchyny/lightline.vim' " vim status bar
+Plug 'tpope/vim-commentary' " easy toggle comment
+Plug 'cocopon/vaffle.vim' " filer on vim
+Plug 'machakann/vim-sandwich' " easy replace block char({} -> ())
+Plug 'cohama/lexima.vim' " auto create block
+Plug 'mattn/vim-sonictemplate' " template engine
+Plug 'thinca/vim-qfreplace' " multifile replace with QuickFix
+Plug 'mattn/vim-maketable' " convert markdown table from csv
+
+" Language Server Integrate
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Code Snippets(+Language Server Integrate)
+if has('python3')
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+endif
+
+" External Command Integrate
+if executable("fzf")
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+endif
+call plug#end()
+
+
+" Load External File Configurations
+runtime! filetype.vim
+runtime! colorscheme.vim
+runtime! command.vim
+runtime! plugins.vim
 runtime! keymapping.vim
 
 
-" Load Local Configuration
-let $LOCAL_VIMRC_AFTER = expand(GetVimConfigDir() . "/vimrc_local_after")
-if filereadable($LOCAL_VIMRC_AFTER)
-    source $LOCAL_VIMRC_AFTER
+" Load Local After Configuration
+let s:local_vimrc_after = expand(g:vim_config_dir . "/vimrc_local_after")
+if filereadable(s:local_vimrc_after)
+    execute printf("%s %s", "source", s:local_vimrc_after)
 endif
