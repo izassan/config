@@ -20,3 +20,7 @@ Set-PSReadLineKeyHandler -Key Ctrl+z -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::Insert("vim .")
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
+
+Set-PSReadLineKeyHandler -Key Ctrl+Backspace -Function BackwardDeleteChar
+Set-PSReadLineKeyHandler -Key Alt+Backspace -Function BackwardKillWord
+Set-PSReadLineKeyHandler -Key Ctrl+Alt+Backspace -Function BackwardKillWord
