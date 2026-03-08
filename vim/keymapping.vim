@@ -16,7 +16,9 @@ nnoremap sh <C-w>h
 nnoremap sl <C-w>l
 nnoremap <C-h> :nohlsearch<CR>
 nnoremap <C-c> :CopyFileContent<CR>
-nnoremap <Leader>je :e .<CR>
+nnoremap <C-,> A,<ESC>0
+nnoremap <C-x> $x0
+nnoremap <Leader>e :e .<CR>
 nnoremap <Leader>t :terminal ++close<CR>
 nnoremap <Leader>T :terminal ++curwin ++close<CR>
 

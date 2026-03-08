@@ -1,0 +1,1 @@
+autocmd QuickfixCmdpost vimgrep copen
