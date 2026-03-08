@@ -1,35 +1,40 @@
-" Key mapping
-nnoremap <Space> <Nop>
-nnoremap <Space>je :e .<CR>
+" Disable Default Keymapping
+noremap <Left> <Nop>
+noremap <Down> <Nop>
+noremap <Up> <Nop>
+noremap <Right> <Nop>
+
+
+" General
+let g:mapleader = "\<space>"
 nnoremap + <C-a>
 nnoremap - <C-x>
-inoremap jj <ESC>
 nnoremap Y y$
-nnoremap <C-h> :nohlsearch<CR>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sh <C-w>h
 nnoremap sl <C-w>l
+nnoremap <C-h> :nohlsearch<CR>
 nnoremap <C-c> :CopyFileContent<CR>
-let g:use_shell = has("win32") ? "pwsh" : "zsh"
-nnoremap <Space>t :execute("terminal ++close " . g:use_shell)<CR>
-nnoremap <Space>T :execute("terminal ++curwin ++close " . g:use_shell)<CR>
-nnoremap <Space>r :source %<CR>
-nnoremap <Space>mc :CreateMemo<CR>
-nnoremap <Space>mo :OpenMemo<CR>
+nnoremap <Leader>je :e .<CR>
+nnoremap <Leader>t :terminal ++close<CR>
+nnoremap <Leader>T :terminal ++curwin ++close<CR>
+
+inoremap jj <ESC>
 
 
-" Plugin manage
-if !filereadable(expand(GetVimConfigDir() . "/autoload/plug.vim"))
-    finish
-endif
-
-nnoremap [LSP] <Nop>
-nmap <Space>l [LSP]
+" LSP
+noremap [LSP] <Nop>
+nmap <Leader>l [LSP]
 
 nnoremap [LSP]r :LspRename<CR>
 nnoremap [LSP]a :LspCodeAction<CR>
+nnoremap [LSP]d :LspDocumentDiagnostics<CR>
 
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+" Memo
+noremap [Memo] <Nop>
+nmap <Leader>m [Memo]
+
+nnoremap [Memo]c :CreateMemo<CR>
+nnoremap [Memo]o :OpenMemo<CR>
