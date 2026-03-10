@@ -16,7 +16,10 @@ set completeopt=menuone,noinsert,noselect,preview
 
 
 " vim-sonictemplate
-let g:sonictemplate_vim_template_dir = [ expand(g:vim_config_dir . "/templates") ]
+let g:sonictemplate_vim_template_dir = [
+\   expand(g:vim_config_dir . "/templates"),
+\   expand(g:vim_config_dir . "/templates_local"),
+\]
 
 
 " vaffle.vim
@@ -27,7 +30,11 @@ let g:vaffle_open_selected_vsplit_position='rightbelow'
 
 " ultisnips
 let g:UltiSnipsEnableSnipMate=0
-let g:UltiSnipsSnippetDirectories = [ expand(g:vim_config_dir . "/codesnippets") ]
+let g:UltiSnipsSnippetDirectories = [
+\   expand(g:vim_config_dir . "/plugged/vim-snippets/UltiSnips"),
+\   expand(g:vim_config_dir . "/codesnippets"),
+\   expand(g:vim_config_dir . "/codesnippets_local")
+\]
 
 if has('python3')
     let g:UltiSnipsExpandTrigger="<Tab>"
