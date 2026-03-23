@@ -33,12 +33,7 @@ Set-PSReadlineOption -BellStyle None
 
 
 # Configure Alias
-if(Get-Command maskcmd -ea SilentlyContinue){
-    if($PSVersionTable.PSVersion.Major -eq 7){
-        Invoke-Expression (&maskcmd generate powershell --init)
-    }
-}
-
+. $PSScriptRoot\alias.ps1
 
 # Configure Prompt
 if(Get-Command starship -ea SilentlyContinue){

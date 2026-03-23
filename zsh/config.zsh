@@ -26,6 +26,6 @@ setopt extended_history
 type starship > /dev/null && eval "$(starship init zsh)"
 
 # configuration alias with maskcmd
-type maskcmd > /dev/null && eval "$(maskcmd generate zsh --init)"
+source $XDG_CONFIG_HOME/zsh/alias.zsh
 
 [ -r ~/.config/zsh/zshrc_local_after.zsh ] && source ~/.config/zsh/zshrc_local_after.zsh
